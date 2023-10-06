@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE view SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<view name='Transfers\ALL' alias='transfers.all' xmlns='http://www.lotus.com/dxl'
+ version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' showinmenu='false'
+ publicaccess='false' designerversion='8.5.3' unreadmarks='none' onopengoto='lastopened'
+ onrefresh='displayindicator' headers='simple' opencollapsed='false' showresponsehierarchy='false'
+ showmargin='true' shrinkrows='false' extendlastcolumn='false' showhierarchies='false'
+ unreadcolor='black' rowlinecount='1' headerlinecount='2' rowspacing='1.5'
+ bgcolor='#e0f1ff' totalscolor='gray' headerbgcolor='#e0f1ff' boldunreadrows='false'
+ evaluateactions='false' allownewdocuments='false' allowcustomizations='true'
+ hidemarginborder='false' marginwidth='0px' marginbgcolor='white' gridstyle='solid'
+ gridcolor='#0082bf' uniquekeys='false'>
+<noteinfo noteid='19e' unid='E3DA8B2F9FFE1337C1257B28002BED60' sequence='13'>
+<created><datetime>20130308T085948,16+01</datetime></created>
+<modified><datetime dst='true'>20160427T123913,02+02</datetime></modified>
+<revised><datetime dst='true'>20130926T161315,96+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123913,02+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123913,02+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
+ event='selection'><formula>SELECT  form = "File" &amp; Deleted = ""</formula></code>
+<actionbar bgcolor='#d4d0c8' bordercolor='black'>
+<actionbuttonstyle bgcolor='#d4d0c8' displayborder='always'/><border width='0px 0px 1px'/></actionbar>
+<column sort='descending' hidedetailrows='false' itemname='$2' width='14'
+ resizable='true' separatemultiplevalues='true' sortnoaccent='false' sortnocase='true'
+ showaslinks='false'><font size='8pt' color='maroon' style='italic' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><columnheader title='Created'><font
+ size='8pt' color='#0060a0' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></columnheader><datetimeformat show='datetime' date='yearmonthday'
+ fourdigityearfor21stcentury='true' time='hourminute' zone='never' dateformat='yearmonthdayweekday'
+ dayformat='twodigitday' monthformat='twodigitmonth' yearformat='fourdigityear'
+ weekdayformat='shortname' dateseparator1='-' dateseparator2='-' dateseparator3=' '
+ timeseparator=':' timeformat24='true' preference='usersetting'/><numberformat
+ format='general' punctuated='false' parens='false' percent='false' bytes='false'/><code
+ event='value'><formula>@Created</formula></code></column>
+<column hidedetailrows='false' itemname='$9' width='1.6250' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
+ showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
+>@If( Status = "New" | Status = "" ; 79 ;
+Status = "Processed" ; 82 ;
+0)</formula></code></column>
+<column hidedetailrows='false' itemname='$8' width='1.6250' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
+ showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
+>@If( Type = "Import" | Type = "" ; 111 ;
+Type = "Export" ; 108 ;
+0)</formula></code></column><sharedcolumnref name='icon_Attachments'>
+<column hidedetailrows='false' itemname='$6' width='1.2500' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
+ showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
+>@If(@Attachments;5;0)</formula></code></column></sharedcolumnref>
+<column resort='ascending' hidedetailrows='false' itemname='$7' width='50.7500'
+ resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
+ showaslinks='false' deferindexcreation='true'><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><columnheader title='Files'><font
+ size='8pt' color='#0060a0' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></columnheader><code event='value'><formula>@AttachmentNames</formula></code></column>
+<column align='center' resort='ascending' hidedetailrows='false' itemname='Status'
+ width='8.7500' resizable='true' separatemultiplevalues='false' sortnoaccent='false'
+ sortnocase='true' showaslinks='false' deferindexcreation='true'><font size='8pt'/><columnheader
+ title='Status'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader></column>
+<column resort='ascending' hidedetailrows='false' itemname='FileUID' width='10.7500'
+ resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
+ showaslinks='false' deferindexcreation='true'><font size='8pt' color='gray'/><columnheader
+ title='FileUID'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader></column>
+<column sort='descending' resort='descending' hidedetailrows='false' itemname='$10'
+ width='12.2500' resizable='true' separatemultiplevalues='true' sortnoaccent='false'
+ sortnocase='true' showaslinks='false' deferindexcreation='true'><font size='8pt'
+ style='italic' name='Verdana' pitch='variable' truetype='true' familyid='20'/><columnheader
+ title='Updated'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader><datetimeformat show='datetime'
+ date='yearmonthday' fourdigityearfor21stcentury='true' time='hourminute'
+ zone='never' dateformat='yearmonthdayweekday' dayformat='twodigitday' monthformat='twodigitmonth'
+ yearformat='fourdigityear' weekdayformat='shortname' dateseparator1='-' dateseparator2='-'
+ dateseparator3=' ' timeseparator=':' timeformat24='true' preference='usersetting'/><numberformat
+ format='general' punctuated='false' parens='false' percent='false' bytes='false'/><code
+ event='value'><formula>@Modified</formula></code></column>
+<column hidedetailrows='false' itemname='StatusMessage' width='58.3750' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><font
+ size='8pt' color='blue' name='Verdana' pitch='variable' truetype='true' familyid='20'/><columnheader
+ title='StatusMessage'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader></column></view>
+

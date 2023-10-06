@@ -1,0 +1,370 @@
+'++LotusScript Development Environment:2:5:(Options):0:74
+Option Public
+Option Declare
+
+
+
+'++LotusScript Development Environment:2:5:(Forward):0:1
+Declare Class appLog
+Declare Sub Initialize
+Declare Function SecondsToTimeString( secInput As Double , separator As String , result As String ) As String
+Declare Sub AgentCodeExample
+Declare Function LogPrint( logPrintMsg As String ) As String
+Declare Sub CalcExeTime
+Declare Function LogDocProcess( logAction As String, logPrintMsg As String, logApplName As String, logActivityName As String ) As String
+
+'++LotusScript Development Environment:2:5:(Declarations):0:10
+Private session As NotesSession
+Private db As NotesDatabase
+Private dbLog As NotesDatabase
+Private docLog As NotesDocument
+%REM
+	Class appLog
+	Description: 
+	********************** CLASS NOT COMPLETE 20130317 /AMA ***********************
+%END REM
+Class appLog
+	Private strVersion As String
+	Private processName As String
+	Private session As NotesSession
+	Private db As NotesDatabase
+	Private dbLog As NotesDatabase
+	Private docLog As NotesDocument
+	Private optSaveOnPrint As Boolean
+	
+	%REM
+	===============================
+		Sub New
+		Description: Comments for Sub
+	===============================
+	%END REM
+	Sub New()
+		Set session = New NotesSession
+		Set db = session.CurrentDatabase
+		me.processName = "LogProcess.appLog"
+		me.strVersion = "20130317"
+		Print processName & { - START (} & me.strVersion & {)}
+	End Sub
+	
+	%REM
+	===============================
+		Function init
+		Description: Comments for Function
+	===============================
+	%END REM
+	Function init()
+		Dim docProfile As NotesDocument
+		Dim replicaIdLog As String
+		
+		Set docProfile = me.db.GetProfileDocument( "DatabaseProfile" )
+		If docProfile Is Nothing Then
+			Print me.processName & { - Database Profile is Missing.}
+		Else
+			replicaIdLog = docProfile.Getitemvalue( "AppLogRepIDLS" )(0)
+		End If
+		
+		If replicaIdLog = "" Then
+			Set dbLog = me.db
+		Else
+			Call dbLog.Openbyreplicaid( db.Server, replicaIdLog )
+			If Not dbLog.Isopen Then
+				Set dbLog = me.db
+			End If
+		End If
+		If me.dbLog.Replicaid = me.db.Replicaid Then
+			Print me.processName & { - Using Current Database as Log.}
+		End If
+		
+	End Function
+	
+End Class
+'++LotusScript Development Environment:2:2:Initialize:1:10
+Sub Initialize
+	Set session = New NotesSession
+	Set db = session.Currentdatabase
+	Set dbLog = New NotesDatabase( "", "" )
+End Sub
+
+'++LotusScript Development Environment:2:1:SecondsToTimeString:1:8
+Function SecondsToTimeString( secInput As Double , separator As String , result As String ) As String
+	Const sec1hour = 3600
+	Const sec1min = 60
+	Dim hourResult As Single
+	Dim minResult As Single
+	Dim secResult As Single
+	Dim hourStr As String
+	Dim minStr As String
+	Dim secStr As String
+	Dim secRemain As Single
+	
+	On Error Goto ErrorHandler
+	Stop
+	'... Calc hour, minutes and seconds
+	secRemain = secInput
+	If secInput >= sec1hour Then
+		hourResult = Fix( secInput / sec1hour )
+		secRemain = secInput Mod sec1hour
+	Else
+		hourResult = 0
+	End If
+	
+	minResult = Fix( secRemain / sec1min )
+	
+	secResult = secRemain Mod sec1min
+	
+	'...Convert to text
+	hourStr = Right( "0" & Cstr( hourResult ) , 2 )
+	minStr = Right( "0" & Cstr( minResult ) , 2 )
+	secStr =Right( "0" & Cstr( secResult ) , 2 )
+	
+	SecondsToTimeString = hourStr & separator & minStr & separator & secStr
+	
+ExitPoint:
+	Exit Function
+	
+ErrorHandler:
+	result = "Error. Unknown error." & Getthreadinfo(1) & Chr(10) & "[" & Err() & "] " & Error() &  " (agent row no: " & Erl() & ")"
+	Goto ExitPoint
+	
+End Function
+
+'++LotusScript Development Environment:2:2:AgentCodeExample:1:8
+Sub AgentCodeExample
+	
+%REM
+'Copy this Script Library Object into appropriate database
+'Following examples can be inserted in scripted code to log events
+
+'---Options example:
+Use "CreateLogDocument"
+
+'---Dim exaple:
+			Dim logApplName As String
+			Dim logActivityName As String
+			Dim logAction As String
+			Dim logPrintMsg As String
+			Dim logStatus As String
+			On Error Goto ErrorHandler
+
+'---Start example:
+			logApplName = "Exakt Utfall"
+			logActivityName = "GetOrderStatisticsUpdate"
+			logAction = "start"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+
+'---Print example - to be inserted in code to log specific events
+			logPrintMsg = "Enter log message here..."
+			logStatus = LogPrint( logPrintMsg )
+
+'---End example:
+			logAction = "end"
+			logPrintMsg = "Activity ended"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+			End
+
+'---Send mail example:
+			logApplName = "Exakt Utfall"
+			logActivityName = "GetOrderStatisticsUpdate"
+			logAction = "mail"
+			logPrintMsg = "Enter mail message here"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+
+'---Controlled Error example:
+			logAction = "error"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+
+'---Uncontrolled error handler example:
+ErrorHandler:
+		Dim agent as NotesAgent
+		Set agent = session.CurrentAgent
+		logAction = "error"
+		logPrintMsg = "Scriptfel i " & agent.Name & " - " & Getthreadinfo(1) & Chr(10) & Err() & " " & Error() &  ". Fel på rad " & Erl()
+		logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+		End
+
+%ENDREM
+	
+End Sub
+
+'++LotusScript Development Environment:2:1:LogPrint:3:8
+'---Print message to log document
+
+Function LogPrint( logPrintMsg As String ) As String
+	
+	On Error Goto ErrorHandler
+	
+	Dim rtBody As NotesRichTextItem	
+	Dim rtStyle As NotesRichTextStyle
+	
+	Set rtBody = docLog.GetFirstItem( "Body" )
+	Set rtStyle = session.CreateRichTextStyle
+	rtStyle.FontSize = 8
+	rtStyle.NotesFont = FONT_COURIER
+	Call rtBody.AppendStyle(rtStyle)
+	Call rtBody.AppendText( logPrintMsg )
+	Call rtBody.AddNewLine(1)
+	'Call docLog.Save( True, False )
+	
+	LogPrint = "ok"
+	Exit Function
+	
+ErrorHandler:
+	LogPrint = "error"
+	
+	Exit Function
+	
+	
+End Function
+
+'++LotusScript Development Environment:2:2:CalcExeTime:1:8
+Sub CalcExeTime
+	Dim dtStart As New NotesDateTime( docLog.StartTime(0) )
+	Dim dtEnd As New NotesDateTime( docLog.EndTime(0) )
+	Dim result As String
+	Dim exeSec As Double
+	Dim exeTimeString As String
+	
+	exeSec = dtEnd.TimeDifferenceDouble( dtStart )
+	docLog.ExeTime = exeSec
+	
+	exeTimeString = SecondsToTimeString( exeSec , ":" , result )
+	docLog.ExeTimeString = exeTimeString
+	
+End Sub
+
+'++LotusScript Development Environment:2:1:LogDocProcess:7:8
+'---The Log function starts here !!
+
+'---This code will create or update current log document
+'---Pass through variables to this function in order: ApplicationName, ActivityName, LogAction, LogMessage, LogDocUNID, ErrorNumber, ErrorMessage, ErrorLine
+'---The LogDocProcess funcion as a variable contains docLog itself
+
+Function LogDocProcess( logAction As String, logPrintMsg As String, logApplName As String, logActivityName As String ) As String
+	Dim rtBody As NotesRichTextItem
+	Dim rtStyle As NotesRichTextStyle
+	Dim itemTmp As NotesItem
+	Dim logErrorString As String
+	Dim printStatus As String							'---start, error, end or mail
+	Dim sendTo As Variant							'---Mail address to log database
+	
+	On Error Goto ErrorHandler
+		
+	'=== Open Log database (use same db if log-db can't be found)
+	If Not dbLog.IsOpen Then
+		If Not dbLog.OpenByReplicaID( db.Server , db.GetprofileDocument( "DatabaseProfile" ).AppLogRepIDLS(0) ) Then
+			Set dbLog = db
+		End If
+	End If
+	
+	'=== Create log document
+	If docLog Is Nothing Then
+		Set docLog = dbLog.CreateDocument
+	End If
+	
+	'--------------------------
+	'=== START action
+	'--------------------------
+	If logAction = "start" Then
+		docLog.Form = "Document"
+		docLog.DocArea = logApplName
+		docLog.DocType = "Agent Log"
+		docLog.DocName = logActivityName
+		docLog.Subject = "Execution Report"
+		docLog.StartTime = Now
+		docLog.CreatedBy = session.Username
+		Set itemTmp = docLog.GetFirstItem( "CreatedBy" )
+		itemTmp.IsAuthors = True
+		docLog.CreatedAt = Now
+		Set rtBody = New NotesRichTextItem( docLog , "Body" )
+		'... Print msg if one exists
+		If logPrintMsg <> "" Then
+			printStatus = LogPrint( logPrintMsg )
+		End If
+		
+	'--------------------------
+	'=== PRINT action
+	'--------------------------
+	Elseif logAction = "print" Then
+		printStatus = LogPrint( logPrintMsg )
+		
+	'--------------------------
+	'=== END action
+	'--------------------------
+	Elseif logAction = "end" Then
+		'... Print msg if one exists
+		If logPrintMsg <> "" Then
+			printStatus = LogPrint( logPrintMsg )
+		End If
+		docLog.EndTime = Now
+		Call CalcExeTime
+		docLog.Status = "Activity Completed."
+		Call docLog.Save( True , False )
+		
+	'--------------------------	
+	'=== ERROR action
+	'--------------------------
+	Elseif logAction = "error" Then
+		'... Print msg if one exists
+		If logPrintMsg <> "" Then
+			printStatus = LogPrint( logPrintMsg )
+		End If
+		docLog.EndTime = Now
+		Call CalcExeTime
+		docLog.Status = "Activity Ended with an Error"
+		Call docLog.Save( True , False )
+		
+	'--------------------------	
+	'=== MAIL action
+	'--------------------------
+	Elseif logAction = "mail" Then	'---Send log document as mail to preffered logdatabase
+		
+		On Error Goto NoResultExit
+		sendTo = db.GetprofileDocument( "DatabaseProfile" ).LogMailAddr
+		If sendTo(0) = "" Then
+			LogDocProcess = "error"
+			Exit Function
+		End If
+		
+		docLog.Status = "User function Ended with an Error"
+		'docLog.FormType = "UserError"
+		docLog.EndTime = Now
+		docLog.Form = "UserError"
+		docLog.DocArea = logApplName
+		docLog.DocType = "Agent Log"
+		docLog.DocName = logActivityName
+		docLog.Subject = logApplName & " - Error Report"
+		docLog.StartTime = Now
+		docLog.CreatedBy = session.Username
+		docLog.UserName = session.CommonUserName
+		docLog.CreatedAt = Now
+		Set rtBody = New NotesRichTextItem( docLog , "Body" )	
+		Set rtStyle = session.CreateRichTextStyle
+		rtStyle.FontSize = 8
+		rtStyle.NotesFont = FONT_COURIER
+		Call rtBody.AppendStyle(rtStyle)
+		Call rtBody.AddNewLine(2)
+		Call rtBody.AppendText( logPrintMsg )
+		Call docLog.Send( False , sendTo )
+		LogDocProcess = "ok"
+		
+		Exit Function
+		
+	End If
+	
+	'Call docLog.Save( True , False )
+	
+NoResultExit:
+	logPrintMsg = ""
+	LogDocProcess = "ok"
+	
+	Exit Function
+	
+ErrorHandler:
+	logPrintMsg = "Log execution ERROR! " & Getthreadinfo(1) & Chr(10) & "[" & Err() & "] " & Error() &  " (agent row no: " & Erl() & ")"
+	printStatus = LogPrint( logErrorString )
+	LogDocProcess = "error"
+	
+	Exit Function
+	
+End Function
+

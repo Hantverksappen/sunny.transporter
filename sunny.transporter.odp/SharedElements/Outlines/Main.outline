@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE outline SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<outline name='Main' alias='main' xmlns='http://www.lotus.com/dxl' version='12.0'
+ maintenanceversion='2.2' replicaid='C1257FA2003A850E' publicaccess='false'
+ designerversion='8.5.3'>
+<noteinfo noteid='162' unid='B4EC3BBEBB6B9DC0C1257B2800296E94' sequence='3'>
+<created><datetime>20130308T083232,84+01</datetime></created>
+<modified><datetime dst='true'>20160427T123912,70+02</datetime></modified>
+<revised><datetime>20130308T090100,46+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123912,70+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123912,70+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<outlineentry label='Transfers' type='none'/>
+<outlineentry label='*NEW' level='1' type='namedelementlink'><namedelementlink
+ type='view' name='transfers.new'/></outlineentry>
+<outlineentry label='ALL' level='1' type='namedelementlink'><namedelementlink
+ type='view' name='transfers.all'/></outlineentry>
+<outlineentry label='Other' type='none'/>
+<outlineentry level='1' type='otherviews'/>
+<outlineentry level='1' type='otherprivateviews'/>
+<outlineentry level='1' type='otherfolders'/>
+<outlineentry level='1' type='otherprivatefolders'/></outline>
+

@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Domino Designer
+Bundle-SymbolicName: SunnyD1_2fSolute_sunnyside5crelease5cTransporter_44_nsf;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: TODO
+Require-Bundle: org.eclipse.ui,
+  org.eclipse.core.runtime,
+  com.ibm.commons,
+  com.ibm.commons.xml,
+  com.ibm.commons.vfs,
+  com.ibm.jscript,
+  com.ibm.designer.runtime.directory,
+  com.ibm.designer.runtime,
+  com.ibm.xsp.core,
+  com.ibm.xsp.extsn,
+  com.ibm.xsp.designer,
+  com.ibm.xsp.domino,
+  com.ibm.notes.java.api,
+  com.ibm.xsp.rcp
+Eclipse-LazyStart: false

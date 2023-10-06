@@ -1,0 +1,308 @@
+'++LotusScript Development Environment:2:5:(Options):0:74
+%REM
+	Library MainFunctions
+	Created Mar 6, 2013 by Anders Magnusson/Solute
+	Description: Comments for Library
+%END REM
+Option Public
+Option Declare
+
+Use "LogProcess"
+
+'++LotusScript Development Environment:2:5:(Forward):0:1
+Declare Class ImportFileClass
+Declare Function DeleteFile
+Declare Function MainImportDocument()
+
+'++LotusScript Development Environment:2:5:(Declarations):0:10
+Private logApplName As String
+Private logActivityName As String
+Private logMsg As String
+
+
+
+%REM
+	Class ImportFileClass
+	Description: Comments for Class
+	Updates:
+	20130423	-	New documents updated with field Type = "Import". /AMA
+%END REM
+Class ImportFileClass
+	Private strVersion As String
+	Private processName As String
+	Private session As NotesSession
+	Private db As NotesDatabase
+	Private view As NotesView
+	Private docDbProfile As NotesDocument
+	Private strDirIn As String
+	Private strDirOut As String
+	Private debug As Boolean
+	
+	%REM
+	===============================
+		Sub new
+		Description: Comments for Sub
+	===============================
+	%END REM
+	Sub New
+		strVersion = "201300423"
+		processName = "MainFunctions.ImportFileClass"
+		Set me.session = New NotesSession
+		Set me.db = session.Currentdatabase
+		me.debug = true
+		
+		Print me.processName + " new (" + strVersion +")"
+		
+		logApplName = me.db.Title
+		logActivityName = me.processName
+		logMsg = {PROCESS STARTED (version: } & me.strVersion & {)
+==================================================}
+		Call LogDocProcess( "start", logMsg, logApplName, logActivityName )
+		
+	End Sub
+	
+	%REM
+	===============================
+		Function init
+		Description: Comments for Function
+	===============================
+	%END REM
+	Function init()
+		Dim fileName As String
+		Dim filePath As String
+		
+		Set me.docDbProfile = me.db.Getprofiledocument( "DatabaseProfile" )
+		
+		If Not me.docDbProfile Is Nothing Then
+			'=== Get Directories from Database Profile
+			me.strDirIn = me.docDbProfile.Getitemvalue("DirectoryIn")(0) 
+			me.strDirOut = me.docDbProfile.Getitemvalue( "DirectoryOut" )(0)
+			
+			logMsg = {Directory IN:  } & me.strDirIn & {
+Directory OUT: } & me.strDirOut
+			LogPrint( logMsg )
+			
+			If me.strDirIn = "" Or me.strDirOut = "" Then
+				logmsg = {ERROR: Directory for Input and/or Output is missing in Database Profile!}
+				Print processName & { - } & logMsg
+				Call LogDocProcess( "error", logMsg, "", "" )
+				Exit Function
+			End If
+			
+			'=== Loop directory for all files
+			fileName = Dir( me.strDirIn & "\*.*", 0 )
+			If fileName = "" Then
+				If debug Then Print me.processName + " - No Files Found: " & me.strDirIn
+				Exit Function
+			End If
+			
+			Do While fileName <> ""
+				filePath = me.strDirIn & "\" & fileName
+				
+				If importFile( filePath ) = False Then
+					'...Logga felet
+				End If
+				
+				fileName = Dir()
+			Loop
+			
+		Else
+			logmsg = {ERROR: Database Profile Not Found!}
+			Print processName & { - } & logMsg
+			Call LogDocProcess( "error", logMsg, "", "" )
+			Exit Function
+		End If
+		
+		logMsg = {==================================================
+PROCESS ENDED}
+		Call LogDocProcess( "end", logMsg, logApplName, logActivityName )
+		
+	End Function
+
+	%REM
+	===============================
+		Function importFile
+		Description: Comments for Function
+	===============================
+	%END REM
+	Private Function importFile( strFileName As String ) As Boolean
+		Dim strOutDir As String
+		Dim docFile As NotesDocument
+		Dim rtItem As NotesRichTextItem
+		Dim object As NotesEmbeddedObject
+		Dim strFileNameNew As String
+		
+		logMsg = {Importing File: } & strFileName
+		Call LogPrint( logMsg )
+		If debug Then Print me.processName & { - } logmsg
+		
+		strFileNameNew = me.strDirOut & "\" & StrRightBack( strFileName, "\" )
+					
+		'=== Create New Document
+		Set docFile = db.Createdocument()		
+		With docFile
+			.Form = "File"	
+			.CreatedDate = Now
+			.FileUID = Evaluate( {@Unique}, docFile )
+			.Status = "New"
+			.Type = "Import"
+		End With
+		
+		'=== Attach File
+		Set rtItem = New NotesRichTextItem( docFile, "Body" )
+		Set object = rtitem.EmbedObject( EMBED_ATTACHMENT, "", strFileName )
+		
+		'=== Save Document
+		Call docFile.save(True, False)
+		
+		logMsg = {Document Created and File Attached (FileUID: } & docFile.Getitemvalue( "FileUID" )(0) & {).}
+		Call LogPrint( logMsg )
+		If debug Then Print me.processName & { - } logmsg
+		
+		'=== Change Name = File is moved to Out Directory
+		Name strFileName As strFileNameNew
+		
+		logMsg = {File Moved to: } & strFileNameNew
+		Call LogPrint( logMsg )
+		If debug Then Print me.processName & { - } logmsg
+			
+	End Function	
+	
+End Class
+'++LotusScript Development Environment:2:1:DeleteFile:5:8
+%REM
+	Function Main_DeleteFile
+	Description: Comments for Function
+%END REM
+Function DeleteFile
+	Dim strVersion As String
+	Dim processName As String
+	Dim session As NotesSession
+	Dim db As NotesDatabase
+	Dim docDbProfile As NotesDocument
+	Dim strDirOut As String
+	Dim intLimitDays As Integer
+	Dim fileName As String
+	Dim filePath As String
+	Dim dtFile As NotesDateTime
+	Dim dtLimit As NotesDateTime
+	Dim cExe As Single
+	Dim cDel As Single
+	Dim debug As Boolean
+	
+	strVersion = "20130319"
+	processName = "MainFunctions.DeleteFile"
+	Set session = New NotesSession
+	Set db = session.Currentdatabase
+	debug = True
+		
+	logApplName = db.Title
+	logActivityName = processName
+	logMsg = {PROCESS STARTED (version: } & strVersion & {)
+==================================================}
+	Call LogDocProcess( "start", logMsg, logApplName, logActivityName )
+	
+	
+	Set  docDbProfile =  db.Getprofiledocument( "DatabaseProfile" )
+	
+	If Not  docDbProfile Is Nothing Then
+		'=== Get Directories from Database Profile
+		 strDirOut =  docDbProfile.Getitemvalue( "DirectoryOut" )(0)
+		intLimitDays = docDbProfile.Getitemvalue( "FileDeleteLimit" )(0)
+		
+		logMsg = {Directory OUT: } &  strDirOut & {
+File Delete Limit: } & CStr( intLimitDays ) & { days.}
+		LogPrint( logMsg )
+		
+		If  strDirOut = "" Then
+			logmsg = {ERROR: Directory for Output is missing in Database Profile!}
+			Print processName & { - } & logMsg
+			Call LogDocProcess( "error", logMsg, "", "" )
+			Exit Function
+		ElseIf CStr( intLimitDays ) = "" Then
+			logmsg = {ERROR: Limit for File Delete is missing in Database Profile!}
+			Print processName & { - } & logMsg
+			Call LogDocProcess( "error", logMsg, "", "" )
+			Exit Function
+		End If
+		
+		'=== Loop directory for all files
+		fileName = Dir(  strDirOut & "\*.*", 0 )
+		If fileName = "" Then
+			If debug Then Print  processName + " - No Files Found: " &  strDirOut
+			Exit Function
+		End If
+		
+		Set dtLimit = New NotesDateTime( Now )
+		Call dtLimit.Adjustday( -intLimitDays )
+		Call dtLimit.Setanytime()
+		logmsg = {Delete Limit: } & dtLimit.Localtime & {
+--------------------------------------}
+		Call LogPrint( logMsg )
+		
+		Do While fileName <> ""
+			cExe = cExe  + 1
+			filePath = strDirOut & "\" & fileName
+						
+			Set dtFile = New NotesDateTime( FileDateTime( filePath ) )
+			Call dtFile.Setanytime()
+			
+			logmsg = {File Name '} & fileName & {'
+  > Modified: } & dtFile.Localtime
+			Call LogPrint( logMsg )
+			
+			'=== Delete File
+			If dtFile.Timedifferencedouble( dtLimit ) < 0 Then
+				Kill filePath
+				Call LogPrint( {  > File Deleted!} )
+				cDel = cDel  + 1
+			End If
+			
+			fileName = Dir()
+		Loop
+		Call LogPrint( {--------------------------------------} )
+		
+	Else
+		logmsg = {ERROR: Database Profile Not Found!}
+		Print processName & { - } & logMsg
+		Call LogDocProcess( "error", logMsg, "", "" )
+		Exit Function
+	End If
+	
+	logMsg = CStr( cDel ) & { Files Deleted. } & CStr( cExe ) & { Processed.}
+	Call LogPrint( logMsg )
+	If debug Then Print  processName + logMsg
+	
+	logMsg = {
+==================================================
+PROCESS ENDED}
+	Call LogDocProcess( "end", logMsg, logApplName, logActivityName )
+	
+
+End Function
+
+'++LotusScript Development Environment:2:1:MainImportDocument:5:8
+%REM
+	Function MainImportDocument
+	Description: Comments for Function
+%END REM
+Function MainImportDocument()
+	Dim importOBJ As ImportFileClass
+	
+	Set importOBJ = New ImportFileClass
+	
+	Call importOBJ.Init()
+	
+End Function
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE form SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<form name='Database Profile' alias='DatabaseProfile' xmlns='http://www.lotus.com/dxl'
+ version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='web mobile'
+ nocompose='true' noquery='true' publicaccess='false' designerversion='8.5.3'
+ renderpassthrough='true' conflictaction='mergeconflicts'>
+<noteinfo noteid='1ae' unid='E91A3CDCDCAB790DC1257B26004FBE87' sequence='26'>
+<created><datetime>20130306T153101,19+01</datetime></created>
+<modified><datetime dst='true'>20160427T123913,10+02</datetime></modified>
+<revised><datetime>20130319T111335,14+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123913,10+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123913,10+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
+ event='windowtitle'><formula>"Database profile for " + @DbTitle</formula></code><code
+ event='queryopen'><lotusscript>Sub Queryopen(Source As Notesuidocument, Mode As Integer, Isnewdoc As Variant, Continue As Variant)
+	Dim session As New NotesSession
+	Exit Sub
+	If session.CurrentDatabase.Server = "" Then
+		Msgbox "The database profile document can only be updated on a server" , , "Incorrect action"
+		Continue = False
+	End If
+	
+End Sub</lotusscript></code>
+<actionbar bgcolor='silver' bordercolor='black'><actionbarstyle height='40px'/>
+<actionbuttonstyle heighttype='fixed' height='34' bgcolor='none' displayborder='always'><imageref
+ name='sol_knappskugga.gif'/></actionbuttonstyle><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='system'/><border style='solid'/>
+<action title='Close' icon='27' hide='web mobile'><code event='click'><formula
+> @Command([FileCloseWindow])</formula></code></action>
+<action title='Save' icon='117' hide='preview read web mobile'><code event='click'><formula
+>@Command([FileSave])</formula></code></action></actionbar>
+<body><richtext>
+<pardef id='1'><code event='hidewhen' enabled='false'><formula>1</formula></code></pardef>
+<par def='1'><run><font size='3pt' color='red'/></run></par>
+<pardef id='2'><code event='hidewhen'><formula>1</formula></code></pardef>
+<par def='2'><run html='true'><font size='8pt' color='red'/>-hidden start-</run></par>
+<table cellbordercolor='silver' widthtype='fixedleft' refwidth='5.9910in'><tablecolumn
+ width='1.4604in'/><tablecolumn width='4.5306in'/>
+<tablerow>
+<tablecell>
+<pardef id='4' keepwithnext='true' keeptogether='true'><code event='hidewhen'><formula
+>1</formula></code></pardef>
+<par def='4'><run><font size='8pt'/><field type='text' kind='computed' name='FormDescription'><code
+ event='defaultvalue'><formula>"Database Profile"</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='8' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ color='red'/></run></par></tablecell>
+<tablecell>
+<pardef id='5' keepwithnext='true' keeptogether='true'><code event='hidewhen'><formula
+>1</formula></code></pardef>
+<par def='5'><run><font size='8pt' color='red'/>Form description</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell>
+<par def='4'><run><font color='red'/></run></par></tablecell>
+<tablecell>
+<par def='5'><run><font color='red'/></run></par></tablecell></tablerow></table>
+<par def='2'><run html='true'><font size='8pt' color='red'/>-hidden end-</run></par>
+<pardef id='6'/>
+<par def='6'/><subformref name='LogoHeadMunters |LogoHeadMunters'/>
+<par def='2'><run html='true'><font size='2pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='red'/></run></par>
+<table cellbordercolor='silver' widthtype='fixedleft' columnspacing='0.0785in'
+ refwidth='8.1132in'><tablecolumn width='7.9563in'/>
+<tablerow>
+<tablecell borderwidth='0px 1px 1px 0px' bgcolor='#f7f7f7'>
+<pardef id='7' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>1</formula></code></pardef>
+<par def='7'/>
+<pardef id='8' leftmargin='0' keepwithnext='true' keeptogether='true'><code
+ event='hidewhen'><formula>1</formula></code></pardef><subformref name='DbConnect | DbConnect'/>
+<pardef id='9' keepwithnext='true' keeptogether='true'/>
+<par def='9'/>
+<table widthtype='fitmargins' cellbordercolor='silver' leftmargin='0' rowspacing='0.0278in'
+ columnspacing='0.0785in' refwidth='7.9458in'><tablecolumn width='20.1354%'/><tablecolumn
+ width='79.8646%'/>
+<tablerow>
+<tablecell bgcolor='#e1e1e1'>
+<pardef id='11' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='11'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>IMPORT SETTINGS</run></par></tablecell>
+<tablecell bgcolor='#e1e1e1'>
+<pardef id='12' keepwithnext='true' keeptogether='true'/>
+<par def='12'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='1px 1px 0px' bgcolor='#efefef'>
+<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Server:               </run><button width='2in' widthtype='maximum'
+ maxlines='0' wraptext='true' bgcolor='system'><code event='click'><formula
+>choice := @Prompt([ChooseDatabase];"Choose Any database on the Correct Server";"Choose Any database on the Correct Server") ;
+
+sep := "¤" ;
+dbInfo := @Implode( choice ; sep ) ;
+
+FIELD ImportServer := @If( choice = 1 ; ImportServer ; @Word( dbInfo ; sep ; 1 ) );
+
+@True</formula></code><font size='8pt'/></button><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 1px 0px' bgcolor='#efefef'>
+<pardef id='13' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='13'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/><field usenotesstyle='false' height='0.1965in' width='4.7243in'
+ borderstyle='inset' type='text' kind='computedwhencomposed' name='ImportServer'><code
+ event='defaultvalue'><formula>@ThisValue</formula></code></field></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
+<pardef id='14' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Directory IN: </run></par></tablecell>
+<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
+<pardef id='15' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='15'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/><field usenotesstyle='false' height='0.1965in' width='4.7243in'
+ borderstyle='inset' type='text' kind='editable' name='DirectoryIn'><code
+ event='inputtranslation'><formula>lastChar := @Right( @ThisValue ; 1 );
+@If( lastChar = "\\" ; @LeftBack( @ThisValue ; 1 ) ; @ThisValue )</formula></code></field></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Directory OUT:</run></par></tablecell>
+<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
+<par def='15'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='4.7243in' borderstyle='inset' type='text' kind='editable' name='DirectoryOut'><code
+ event='inputtranslation'><formula>lastChar := @Right( @ThisValue ; 1 );
+@If( lastChar = "\\" ; @LeftBack( @ThisValue ; 1 ) ; @ThisValue )</formula></code></field></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Directory ERROR:</run></par></tablecell>
+<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
+<par def='15'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='4.7243in' borderstyle='inset' type='text' kind='editable' name='DirectoryError'><code
+ event='inputtranslation'><formula>lastChar := @Right( @ThisValue ; 1 );
+@If( lastChar = "\\" ; @LeftBack( @ThisValue ; 1 ) ; @ThisValue )</formula></code></field></run><run
+><font size='8pt' style='bold' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='gray'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
+<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Delete Processed Files after:</run></par></tablecell>
+<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
+<par def='13'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='0.5903in' multiline='true' borderstyle='single' type='number' kind='editable'
+ name='FileDeleteLimit'><numberformat format='general' digits='2' punctuated='false'
+ parens='false' percent='false' bytes='false'/></field></run><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/> days</run></par></tablecell></tablerow></table></tablecell></tablerow></table>
+<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par><subformref name='DocHistoryCalc |DocHistoryCalc'/>
+<par def='2'><run><font color='red'/></run></par><subformref name='FieldsOnEveryForm |FieldsOnEveryForm'/><subformref
+ name='SoftDelete |SoftDelete'/>
+<par def='2'><run><font color='red'/></run></par>
+<par def='2'/></richtext></body>
+<item name='Udate' summary='false' sign='true'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='Cdate' summary='false' sign='true'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='OriginalModTime' sign='true'><datetime>20061206T193657,33+01</datetime></item>
+<item name='CreatedDate' summary='false'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='UpdatedDate' summary='false'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='DeleteDate' summary='false'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='$SubForm_RepIDs' sign='true'><textlist><text>0000000000000000</text><text
+>0000000000000000</text><text>0000000000000000</text><text>0000000000000000</text><text
+>0000000000000000</text></textlist></item>
+<item name='$$ScriptName' summary='false' sign='true'><text>DatabaseProfile</text></item>
+<item name='FileDeleteLimit' summary='false'><number>0</number></item></form>
+

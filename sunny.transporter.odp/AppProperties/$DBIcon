@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE imageresource SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<imageresource name='$DBIcon' xmlns='http://www.lotus.com/dxl' version='12.0'
+ maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='design' publicaccess='false'
+ designerversion='8.5.3' imagename='Z:\SunnySide\images\misc icons\32x32\images.jpg'>
+<noteinfo noteid='166' unid='3879BA15541A0A33C1257B26004491E2' sequence='1'>
+<created><datetime>20130306T132857,94+01</datetime></created>
+<modified><datetime dst='true'>20160427T123912,72+02</datetime></modified>
+<revised><datetime>20130306T132857,93+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123912,72+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123912,72+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><jpeg
+>
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAd
+Hx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3
+Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAAgACADASIA
+AhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAABQYAAwEEB//EACwQAAEDAgMGBgMBAAAAAAAAAAEC
+AwQFEQAhMRIUIkFhgQYTQlFx8CQykcH/xAAYAQACAwAAAAAAAAAAAAAAAAABAgQFBv/EACQRAAED
+BAIBBQEAAAAAAAAAAAECAxEABBLwEyFRMUGBkaGx/9oADAMBAAIRAxEAPwDrtXqm6WYYsZChe50Q
+Pc9emAgZeqD6UOLW+tZz2zcAczbQDFLPnVKe4Wk7S3VlWeiU3tn0AsMHWIEqFKb3biQoJ85ZtnYm
+9gdMsZ5anrtzIg8YMdb9+KtcUW6cRGVB5kV6lP2ZcW1zQps2BHxp2wWoda3xZiytlMkC6VDIOD/D
+0+jNQiTZs9LSx+DtXKhs3TwHMc/2thbqkWVRpjci20GleYhafUBqP5l3ww5rR0qQDxzHe+ng06Eo
+uUBCiM463+iot1ynzXGQpSHGXCEqGtuR7i2DUCoSKpNaDbqWy0lJcRtkBYvmQPi2LvElBNSSJEVS
+USkC2ejg9j19j9CStc+kSkOPNOx3W1XClJy/uhGFdS7aOwZwn2qQ0lu8blJGcb8U6VmS/Tp7ctT9
+2CrhYDh4uAjMaWvnhYmTJFYloYKipx9QbSB6QdbfAue2NSVMqNfmlxlhx1SskpaSSlI+eXfDb4W8
+OKpp3ucUrlqFkpGYaB1z5nr9JSHLt0hMhEzu9USluyaCnIzjob+mv//Z
+</jpeg>
+<item name='$FileSize' sign='true'><number>726</number></item>
+<item name='$MimeType' sign='true'><text>image/jpeg</text></item>
+<item name='$FileModDT' sign='true'><datetime>20130306T133601,88+01</datetime></item></imageresource>
+

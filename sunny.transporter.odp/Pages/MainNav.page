@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE page SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<page name='MainNav' alias='mainnav' xmlns='http://www.lotus.com/dxl' version='12.0'
+ maintenanceversion='2.2' replicaid='C1257FA2003A850E' publicaccess='false'
+ designerversion='8.5.3' bgcolor='#e0f1ff' renderpassthrough='true'>
+<noteinfo noteid='152' unid='8180087331A11C98C1257B2800299C60' sequence='22'>
+<created><datetime>20130308T083430,08+01</datetime></created>
+<modified><datetime dst='true'>20160427T123912,66+02</datetime></modified>
+<revised><datetime>20130313T091325,50+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123912,66+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123912,66+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<body><richtext>
+<pardef id='1' leftmargin='0.7868in'/>
+<par def='1'><embeddedoutline outline='main' showtwistie='true' osstyletwistie='true'
+ widthtype='fitwindow' heighttype='fitwindow' height='6.0104in' targetframe='NotesView'><title
+ style='simple' normalcolor='#0060a0'><font style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><layout labelalign='topleft' entryvoffset='0.1181in'
+ labelhoffset='0.2361in' labelvoffset='0'/></title><toplevel selectedcolor='blue'><font
+ size='9pt' style='bold' name='Verdana' pitch='variable' truetype='true' familyid='20'/><eoutlinebackground
+ selectedcolor='#e1e1e1'/><layout labelalign='topleft' entryvoffset='0.1181in'
+ imagealign='topleft' labelhoffset='0.2361in' labelvoffset='0'/></toplevel><sublevel
+ selectedcolor='blue'><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/><eoutlinebackground selectedcolor='#e1e1e1'/><layout labelalign='topleft'
+ entryvoffset='0.0785in' imagealign='topleft' labelhoffset='0.2000in' labelvoffset='0'/></sublevel><border
+ width='1px'/></embeddedoutline></par></richtext></body>
+<item name='$$ScriptName' summary='false' sign='true'><text>mainnav</text></item></page>
+

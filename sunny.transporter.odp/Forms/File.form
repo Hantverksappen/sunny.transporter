@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE form SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<form name='File' alias='File' xmlns='http://www.lotus.com/dxl' version='12.0'
+ maintenanceversion='2.2' replicaid='C1257FA2003A850E' publicaccess='false'
+ designerversion='8.5.3' bgcolor='#f7f7f7' renderpassthrough='true'>
+<noteinfo noteid='1a6' unid='1A04C81C10D1C0D3C1257B2600452FC8' sequence='15'>
+<created><datetime>20130306T133542,16+01</datetime></created>
+<modified><datetime dst='true'>20160427T123913,06+02</datetime></modified>
+<revised><datetime dst='true'>20130926T161219,87+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123913,06+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123913,06+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<globals><code event='options'><lotusscript>Option Public
+Option Declare
+</lotusscript></code></globals><code event='windowtitle'><formula>"FILE - " + Type</formula></code>
+<actionbar bgcolor='#f0f0f0' bordercolor='black'>
+<actionbuttonstyle bgcolor='#f0f0f0' displayborder='always'/><font color='system'/><border
+ style='solid' width='0px 0px 1px'/>
+<action title='Close' icon='27' showinmenu='false'><code event='click'><formula
+>@Command([CloseWindow])</formula></code></action>
+<action title='Edit' icon='5' showinmenu='false' hide='edit previewedit'><code
+ event='click'><formula>@Command([EditDocument])</formula></code></action>
+<action title='Save' icon='21' showinmenu='false' hide='preview read'><code
+ event='click'><formula>@Command([FileSave])</formula></code></action></actionbar>
+<body><richtext>
+<pardef id='1' spacebefore='1.5'/>
+<par def='1'><run><font size='14pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>File</run></par>
+<pardef id='2'/>
+<par def='2'><run><font size='8pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par>
+<table cellbordercolor='#8f8f8f' leftmargin='0.9375in' widthtype='fixedleft'
+ rowspacing='0.0396in' columnspacing='0.0785in' refwidth='7.7229in'><tablecolumn
+ width='1.1493in'/><tablecolumn width='3.8389in'/><tablecolumn width='2.2639in'/>
+<tablerow>
+<tablecell borderwidth='1px 0px 0px 1px' bgcolor='#e1e1e1'>
+<pardef id='4' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Created:</run></par></tablecell>
+<tablecell borderwidth='1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='5' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='5'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='datetime' kind='computedwhencomposed'
+ name='CreatedDate'><datetimeformat show='datetime' date='yearmonthday' fourdigityearfor21stcentury='true'
+ time='hourminute' zone='never' dateformat='yearmonthdayweekday' dayformat='twodigitday'
+ monthformat='twodigitmonth' yearformat='fourdigityear' weekdayformat='shortname'
+ dateseparator1='-' dateseparator2='-' dateseparator3=' ' timeseparator=':'
+ timeformat24='true' preference='usersetting'/><code event='defaultvalue'><formula
+>@Now</formula></code></field></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='6' keepwithnext='true' keeptogether='true'/>
+<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='1px 0px 0px 1px' bgcolor='#e1e1e1'>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Name:</run></par></tablecell>
+<tablecell borderwidth='1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='5'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='3.5431in' borderstyle='inset' type='text' kind='computed' name='FileName'><code
+ event='defaultvalue'><formula>@AttachmentNames</formula></code></field></run><run
+><font size='9pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<pardef id='7' keepwithnext='true' keeptogether='true'/>
+<par def='7'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px' bgcolor='#e1e1e1'>
+<pardef id='8' keepwithnext='true' keeptogether='true'/>
+<par def='8'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<pardef id='9' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='9'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Type:</run></par></tablecell>
+<tablecell borderwidth='0px' bgcolor='#e1e1e1'>
+<par def='5'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='gray'/><field usenotesstyle='false' height='0.2188in'
+ width='1.1813in' multiline='true' borderstyle='inset' lookupeachchar='false'
+ lookupaddressonrefresh='false' type='keyword' kind='computedwhencomposed'
+ name='Type'><keywords helperbutton='false' columns='1' ui='combobox'/><code
+ event='defaultvalue'><formula>"Export"</formula></code></field></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px' bgcolor='#e1e1e1'>
+<pardef id='10' leftmargin='0' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='10'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='11' leftmargin='0.0014in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>File UID:</run></par></tablecell>
+<tablecell borderwidth='0px' bgcolor='#e1e1e1'>
+<par def='10'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' color='gray' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='computedwhencomposed'
+ name='FileUID'><code event='defaultvalue'><formula>@Unique</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='11'><run><font size='8pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px' bgcolor='#e1e1e1'>
+<par def='10'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='gray'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='12' leftmargin='0.0014in' keepwithnext='true' keeptogether='true'/>
+<par def='12'><run><font size='8pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='gray'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Status:</run></par></tablecell>
+<tablecell borderwidth='0px' bgcolor='#e1e1e1'>
+<par def='10'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.2188in'
+ width='2.3625in' borderstyle='inset' lookupeachchar='false' lookupaddressonrefresh='false'
+ type='keyword' kind='editable' name='Status'><keywords helperbutton='false'
+ columns='1' ui='combobox' allownew='true'><textlist><text>New</text><text
+>Processed</text></textlist></keywords></field></run><run><font size='9pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='12'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<pardef id='13' keepwithnext='true' keeptogether='true'/>
+<par def='13'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Status Message:</run></par></tablecell>
+<tablecell borderwidth='0px 0px 1px' bgcolor='#e1e1e1'>
+<par def='5'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='computedwhencomposed'
+ name='StatusMessage'><code event='defaultvalue'><formula>@ThisValue</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='14' keepwithnext='true' keeptogether='true'/>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 0px 1px' bgcolor='#e1e1e1'>
+<pardef id='15' leftmargin='0.0104in' keepwithnext='true' keeptogether='true'/>
+<par def='15'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 0px 1px' bgcolor='#e1e1e1'>
+<pardef id='16' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='16'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 1px' bgcolor='#e1e1e1'>
+<pardef id='17' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='17'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>File:</run></par></tablecell>
+<tablecell bgcolor='white'>
+<pardef id='18' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='18'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field allowtabout='true' showdelimiters='false'
+ type='richtext' kind='editable' name='Body'/></run><compositedata type='98'
+ prevtype='65418' nexttype='222' afterparcount='8' containertype='65418' aftercontainercount='1'
+ afterbegincount='4'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px' bgcolor='#e1e1e1'>
+<pardef id='19' leftmargin='0.0104in' keepwithnext='true' keeptogether='true'/>
+<par def='19'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 1px 1px' bgcolor='#e1e1e1'>
+<par def='17'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 0px' bgcolor='#e1e1e1'>
+<par def='10'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px 1px 1px 0px' bgcolor='#e1e1e1'>
+<pardef id='20' leftmargin='0.0014in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='20'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow></table>
+<par def='2'><run><font style='bold'/></run></par></richtext></body>
+<item name='$$ScriptName' summary='false' sign='true'><text>Profile</text></item></form>
+

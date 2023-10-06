@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE view SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<view name='All' xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1257FA2003A850E' showinmenu='false' publicaccess='false' designerversion='8.5.3'
+ unreadmarks='none' onopengoto='lastopened' onrefresh='displayindicator' headers='beveled'
+ opencollapsed='true' showresponsehierarchy='true' showmargin='true' shrinkrows='false'
+ extendlastcolumn='false' showhierarchies='false' unreadcolor='black' rowlinecount='1'
+ headerlinecount='1' rowspacing='1' bgcolor='white' totalscolor='black' headerbgcolor='white'
+ boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
+ allowcustomizations='false' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
+ gridstyle='solid' gridcolor='#efefef' uniquekeys='false'>
+<noteinfo noteid='18a' unid='8C649A9F2D666ECFC1257B56004049EF' sequence='5'>
+<created><datetime dst='true'>20130423T134212,31+02</datetime></created>
+<modified><datetime dst='true'>20160427T123912,91+02</datetime></modified>
+<revised><datetime dst='true'>20130424T184703,27+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123912,91+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123912,91+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
+ event='selection'><formula>SELECT @All</formula></code>
+<actionbar bgcolor='#f0f0f0' bordercolor='black'>
+<actionbuttonstyle bgcolor='#f0f0f0'/><font color='system'/><border style='solid'
+ width='0px 0px 1px'/>
+<action title='Categori_ze' showinbar='false' systemcommand='categorize'/>
+<action title='_Edit Document' showinbar='false' systemcommand='edit'/>
+<action title='_Send Document' showinbar='false' systemcommand='send'/>
+<action title='_Forward' showinbar='false' systemcommand='forward'/>
+<action title='_Move To Folder...' showinbar='false' systemcommand='movetofolder'/>
+<action title='_Remove From Folder' showinbar='false' systemcommand='removefromfolder'/>
+<action title='_Read' showinbar='false' systemcommand='markread'/>
+<action title='_Unread' showinbar='false' systemcommand='markunread'/>
+<action title='_Open in New Window' showinbar='false' systemcommand='openinnewwindow'/>
+<action title='_Print...' showinbar='false' systemcommand='print'/>
+<action title='_Delete' showinbar='false' systemcommand='delete'/>
+<action title='_Document Properties' showinbar='false' systemcommand='properties'/>
+<action title='C_ut' showinbar='false' systemcommand='cut'/>
+<action title='_Copy' showinbar='false' systemcommand='copy'/>
+<action title='Copy as Document _Link' showinbar='false' systemcommand='copyasdoclink'/>
+<action title='Copy as _Table' showinbar='false' systemcommand='copyastable'/>
+<action title='P_aste' showinbar='false' systemcommand='paste'/>
+<action title='_Open' showinbar='false' systemcommand='open'/>
+<action title='Bookmark' showinbar='false' systemcommand='bookmark'/></actionbar>
+<column sort='ascending' hidedetailrows='false' itemname='Form' width='1'
+ resizable='true' separatemultiplevalues='true' sortnoaccent='true' sortnocase='true'
+ showaslinks='false' categorized='true' twisties='true'><font size='9pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><columnheader><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></columnheader></column>
+<column hidedetailrows='false' itemname='$9' width='1.6250' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
+ showasicons='true'><columnheader><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader><code event='value'><formula
+>@If( Status = "New" | Status = "" ; 33 ;
+Status = "Processed" ; 82 ;
+0)</formula></code></column>
+<column hidedetailrows='false' itemname='$8' width='1.6250' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
+ showasicons='true'><columnheader><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader><code event='value'><formula
+>@If( Type = "Import" | Type = "" ; 111 ;
+Type = "Export" ; 108 ;
+0)</formula></code></column>
+<column hidedetailrows='false' itemname='$6' width='1.2500' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
+ showasicons='true'><columnheader><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader><code event='value'><formula
+>@If(@Attachments;5;0)</formula></code></column>
+<column resort='ascending' hidedetailrows='false' itemname='$7' width='53'
+ resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
+ showaslinks='false' deferindexcreation='true'><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><columnheader title='Files'><font
+ size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></columnheader><code
+ event='value'><formula>@AttachmentNames</formula></code></column>
+<column resort='ascending' hidedetailrows='false' itemname='FileUID' width='10.7500'
+ resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
+ showaslinks='false' deferindexcreation='true'><font size='8pt' color='gray'/><columnheader
+ title='FileUID'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></columnheader></column>
+<column sort='ascending' hidedetailrows='false' itemname='$1' width='17' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><font
+ size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><columnheader
+ title='Created'><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></columnheader><code event='value'><formula>@Created</formula></code></column></view>
+

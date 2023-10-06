@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE frameset SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<frameset name='Main' alias='mainfs' xmlns='http://www.lotus.com/dxl' version='12.0'
+ maintenanceversion='2.2' replicaid='C1257FA2003A850E' publicaccess='false'
+ designerversion='8.5.3' columns='15% 85%' spacing='0px' borderwidth='3px'
+ bordercolor='#4181c0'>
+<noteinfo noteid='142' unid='9BB830C6755EF210C1257B280029F503' sequence='26'>
+<created><datetime>20130308T083816,99+01</datetime></created>
+<modified><datetime dst='true'>20160427T123912,58+02</datetime></modified>
+<revised><datetime>20130313T091348,53+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123912,58+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123912,58+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<frame name='Nav' border3d='false'><namedelementlink type='page' name='mainnav'/></frame>
+<frame name='NotesView' border3d='false' initialfocus='true'><namedelementlink
+ type='view' name='transfers.new'/></frame></frameset>
+

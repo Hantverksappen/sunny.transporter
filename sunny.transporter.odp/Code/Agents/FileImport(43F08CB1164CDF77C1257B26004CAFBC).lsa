@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE agent SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<agent name='FileImport' alias='FileImport' xmlns='http://www.lotus.com/dxl'
+ version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='v3'
+ publicaccess='false' designerversion='8.5.3' comment='Imports Files from filepath specified in Database Profile'
+ restrictions='fulladminunrestricted' activatable='false' enabled='false'>
+<noteinfo noteid='17e' unid='43F08CB1164CDF77C1257B26004CAFBC' sequence='13'>
+<created><datetime>20130306T145737,24+01</datetime></created>
+<modified><datetime dst='true'>20160427T123912,83+02</datetime></modified>
+<revised><datetime>20130315T101228,26+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123912,83+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123912,83+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<designchange><datetime>20130315T102310,63+01</datetime></designchange>
+<trigger type='scheduled'>
+<schedule type='byminutes' hours='0' minutes='5' runlocation='choose'>
+<starttime><datetime>T040000,00</datetime></starttime></schedule></trigger>
+<documentset type='modified'/><code event='options'><lotusscript>%REM
+	Agent FileImport
+	Created Mar 6, 2013 by Anders Magnusson/Solute
+	Description: Comments for Agent
+%END REM
+Option Public
+Option Declare
+Use "MainFunctions"
+
+
+</lotusscript></code><code event='initialize'><lotusscript>Sub Initialize
+	'.. Agent för importera document från filsystemet.
+
+	Call MainImportDocument()
+	
+End Sub</lotusscript></code>
+<rundata processeddocs='0' exitcode='0'>
+<agentmodified><datetime>20130315T102310,61+01</datetime></agentmodified></rundata></agent>
+

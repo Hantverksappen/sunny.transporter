@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE agent SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<agent name='Delete Documents' alias='DeleteDocuments' xmlns='http://www.lotus.com/dxl'
+ version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='v3'
+ publicaccess='false' designerversion='8.5.3' comment='Delete log documents after 3 Months'
+ activatable='false' enabled='false'>
+<noteinfo noteid='1de' unid='2EA3EE6C8E3D6942C1257FA1002F7AD2' sequence='10'>
+<created><datetime dst='true'>20160426T103836,34+02</datetime></created>
+<modified><datetime dst='true'>20160427T124726,77+02</datetime></modified>
+<revised><datetime dst='true'>20160427T124446,47+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T124726,77+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T124726,77+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<designchange><datetime dst='true'>20160427T124500,63+02</datetime></designchange>
+<trigger type='scheduled'>
+<schedule type='weekly' dayofweek='saturday' runlocation='choose'>
+<starttime><datetime>T020000,00</datetime></starttime></schedule></trigger>
+<documentset type='all'/><code event='action'>
+<simpleaction action='runformula'><formula>SELECT @All ;
+docStatus := Status ;
+dateDoc := @Created ;
+
+REM {Initial Validation} ;
+@If( Form != "File" ;
+	@Return("");
+docStatus = "New" ;
+	@Return("");
+"" );
+
+REM {Delete after 3 months} ;
+dateDel := @Adjust( @Today ;0;-3;0;0;0;0 );
+
+REM {DELETE Document} ;
+@If( Form = "File" &amp; docStatus != "New" &amp; (dateDoc &lt; dateDel) ; @Return( @DeleteDocument ) ; "" )</formula></simpleaction></code>
+<rundata processeddocs='0' exitcode='0'>
+<agentmodified><datetime dst='true'>20160427T124500,63+02</datetime></agentmodified></rundata>
+<item name='$POID'><datetime dst='true'>20160427T124446,47+02</datetime></item></agent>
+

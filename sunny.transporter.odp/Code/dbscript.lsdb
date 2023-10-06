@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE databasescript SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<databasescript xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1257FA2003A850E' designerversion='8.5.3'>
+<noteinfo noteid='1aa' unid='85D223A588681FDBC1257B2F002BAE52' sequence='49'>
+<created><datetime>20130315T085706,74+01</datetime></created>
+<modified><datetime dst='true'>20160427T123913,08+02</datetime></modified>
+<revised><datetime>20130315T100452,07+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T123913,08+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123913,08+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
+ event='options'><lotusscript>%REM
+	Database Script Database Script
+	Created Mar 15, 2013 by Anders Magnusson/Solute
+	Description: Comments for Database Script
+%END REM
+Option Declare
+
+
+</lotusscript></code><code event='postopen'><lotusscript>Sub Postopen(Source As Notesuidatabase)
+	Dim session As New NotesSession
+	Dim ws As New NotesUIWorkspace
+	Dim db As NotesDatabase
+	Dim docDbProfile As NotesDocument
+	Dim fileName As String
+	Dim filePath As String
+	Dim strDirIn As String
+	Dim strDirOut As String
+	Dim flgExistDirIn As Boolean
+	Dim flgExistDirOut As Boolean
+	Dim resultSub As String
+
+	Set db = Source.Database
+	Set docDbProfile = db.Getprofiledocument( "DatabaseProfile" )
+	
+	If Not docDbProfile Is Nothing Then
+		'=== Get Directories from Database Profile
+		strDirIn = docDbProfile.Getitemvalue("DirectoryIn")(0) 
+		strDirOut = docDbProfile.Getitemvalue( "DirectoryOut" )(0)
+		
+		'=== Check if Data exists
+		If strDirIn = "" Or strDirOut = "" Then
+			Call ws.Prompt( PROMPT_OK, "Application Setup", "Directories for Import/Export is Missing!" )
+			Call ws.Editdocument( True, docDbProfile, False, "", False, True )
+			Exit Sub
+		End If
+		
+		'=== Check if Directory is Valid
+		%REM
+		If docDbProfile.Getitemvalue( "ImportServer" )(0) = db.Server Then
+			flgExistDirIn = checkDirectory( strDirIn, False, resultSub )
+			flgExistDirOut = checkDirectory( strDirOut, False, resultSub )
+			
+			If Not flgExistDirIn Or Not flgExistDirOut Then
+				Call ws.Prompt( PROMPT_OK, "Application Setup", "Directories for Import/Export is Not Valid!" )
+				Call ws.Editdocument( True, docDbProfile, False, "", False, True )
+				Exit Sub
+			End If
+			
+		End If
+		%END REM
+		
+	'=== Database Profile Missing - OPEN
+	Else
+		Set docDbProfile = db.Createdocument()
+		Call docDbProfile.Replaceitemvalue( "Form" , "DatabaseProfile" )
+		Call ws.Prompt( PROMPT_OK, "Application Setup", "Database Prodfile is Missing!" )
+		Call ws.Editdocument( True, docDbProfile, False, "", False, True )
+	End If
+	
+End Sub
+
+</lotusscript></code><code event='checkDirectory'><lotusscript>Function checkDirectory( pathName As String, flagCreateDir As Variant, result As String ) As Boolean
+'******************************************
+'*	Loops each level in the path and checks if directory exists.
+'*	If flagCreateDir is True directory is created otherwise an error is returned.
+'*	Created 2005-01-13 Anders Magnusson
+'******************************************
+	On Error GoTo ErrorHandler
+	
+	Dim session As New NotesSession
+	Dim db As NotesDatabase
+	Dim docTmp As NotesDocument
+	Dim pathHier As Variant
+	Dim pathNameTmp As String
+	Dim pathDir As String
+	Dim existDir As String
+	Dim x As Integer
+	
+	Set db = session.Currentdatabase
+	Set docTmp = db.CreateDocument
+	docTmp.Path = pathName
+	result = ""
+	
+	pathHier = Evaluate( {@Explode( Path ; "\\" )} , docTmp )
+	pathNameTmp = pathHier(0)
+	For x = 1 To UBound( pathHier )
+		
+		pathDir = LCase( pathHier(x) )
+		pathNameTmp = pathNameTmp + "\" + pathDir
+		existDir = LCase( Dir$( pathNameTmp , 16 ) )
+		Do While existDir &lt;&gt; "" And existDir &lt;&gt; pathDir
+			existDir = Dir$( pathNameTmp , 16 )
+		Loop
+		
+		If existDir &lt;&gt; pathDir Then
+			If flagCreateDir Then
+				MkDir( pathNameTmp + "\" )
+				checkDirectory = True
+				Print "Created directory '" + pathnameTmp + "'"
+			Else
+				checkDirectory = False
+				result = "Error: Path '" &amp; pathNameTmp &amp; "' couldn't be found"
+				GoTo ExitPoint
+			End If
+		End If
+		
+	Next
+	
+ExitPoint:
+	Exit Function
+	
+ErrorHandler:
+	If flagCreateDir Then
+		result = "Error: Path '" &amp; pathNameTmp &amp; "' couldn't be created"
+	Else
+		result = "Error: Couldn't search for path '" &amp; pathName &amp; "'"
+	End If
+	GoTo ExitPoint
+	
+End Function</lotusscript></code></databasescript>
+

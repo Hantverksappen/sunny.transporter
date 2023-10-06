@@ -1,0 +1,641 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE subform SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<subform name='DbConnect' alias='DbConnect' xmlns='http://www.lotus.com/dxl'
+ version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='web mobile'
+ insertdialog='false' designerversion='8.5.3' comment=' 2011-02-22'>
+<noteinfo noteid='1ba' unid='D4D0688BD6A4645FC1257B26004FCE1D' sequence='4'>
+<created><datetime>20130306T153141,09+01</datetime></created>
+<modified><datetime dst='true'>20160427T124726,64+02</datetime></modified>
+<revised><datetime>20130306T133708,63+01</datetime></revised>
+<lastaccessed><datetime dst='true'>20160427T124726,64+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160427T123913,75+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<globals><code event='options'><lotusscript>Option Public
+
+</lotusscript></code><code event='declarations'><lotusscript>Dim session As NotesSession
+Dim db As NotesDatabase
+Dim ws As NotesUIWorkspace
+Dim uidocConnect As NotesUIDocument
+Dim docConnect As NotesDocument</lotusscript></code></globals><code event='postopen'><lotusscript
+>Sub Postopen(Source As Notesuidocument)
+	
+	Set session = New NotesSession
+	Set ws = New NotesUIWorkspace
+	Set db = session.CurrentDatabase
+	Set uidocConnect = ws.CurrentDocument
+	Set docConnect = uidocConnect.Document
+	
+	Call uidocConnect.Refresh
+	
+	'=== Set database information
+	Dim replicaID As String
+	Dim fPath As String
+	
+	replicaID = db.replicaID
+	replicaID = Left( replicaID , 8 ) &amp; ":" &amp; Right( replicaID , 8 )
+	fPath = db.FilePath
+	
+	Call uidocConnect.FieldSetText( "TransporterRepID" , replicaID )
+	Call uidocConnect.FieldSetText( "TransporterFilePath" , fPath )
+	Call uidocConnect.Refresh
+	'=== END Set database information
+	
+End Sub
+</lotusscript></code><code event='querysave'><lotusscript>Sub Querysave(Source As Notesuidocument, Continue As Variant)
+	
+	'=== Set database information
+	Dim replicaID As String
+	Dim fPath As String
+	
+	replicaID = db.replicaID
+	replicaID = Left( replicaID , 8 ) &amp; ":" &amp; Right( replicaID , 8 )
+	fPath = db.FilePath
+	
+	Call uidocConnect.FieldSetText( "DbRepID" , replicaID )
+	Call uidocConnect.FieldSetText( "DbFilePath" , fPath )
+	Call uidocConnect.Refresh
+	'..Messagebox "hej"
+	'=== END Set database information
+	
+End Sub</lotusscript></code>
+<actionbar bgcolor='#e0dfe3' bordercolor='black'>
+<actionbuttonstyle bgcolor='#e0dfe3'/><font color='system'/><border style='solid'
+ width='0px 0px 1px'/></actionbar>
+<body><richtext>
+<pardef id='1' leftmargin='5.5000in' rightmargin='0%' firstlineleftmargin='1.2500in'
+ tabs='L5.5000in'><parstyle name='SingleIndent'/></pardef>
+<pardef id='2'><code event='hidewhen'><formula>1</formula></code></pardef>
+<par def='2'><run html='true'><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='red'/>- </run><run html='true'><font
+ size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'
+ color='red'/>DbConnect</run><run html='true'><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='red'/> start--</run></par>
+<table rowdisplay='tabs' leftmargin='0.9375in' widthtype='fixedleft' colorstyle='solid'
+ bgcolor='#efefef' refwidth='7.8424in'><tablecolumn width='7.8424in'/>
+<tablerow tablabel='Database info'>
+<tablecell>
+<pardef id='4' leftmargin='0.1451in' spacebefore='1.5' spaceafter='1.5' tabs='L2.3618in L5.1181in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='4'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><actionhotspot hotspotstyle='none'><run><font size='8pt'
+ style='underline' name='Verdana' pitch='variable' truetype='true' familyid='20'
+ color='blue'/>Current Database:</run><code event='click'><lotusscript>Sub Click(Source As Button)
+	Dim replicaID As String
+	Dim fPath As String
+	
+	replicaID = db.replicaID
+	replicaID = Left( replicaID , 8 ) &amp; ":" &amp; Right( replicaID , 8 )
+	fPath = db.FilePath
+	
+	Call uidocConnect.FieldSetText( "DbRepID" , replicaID )
+	Call uidocConnect.FieldSetText( "DbFilePath" , fPath )
+	Call uidocConnect.Refresh
+	
+End Sub</lotusscript></code></actionhotspot><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/>	</run><run><font name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><computedtext><code event='value'><formula
+>@DbTitle</formula></code></computedtext></run><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></run></par>
+<pardef id='5' leftmargin='0.0104in' tabs='L2.3618in L5.1181in L6.4958in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='5'><run><font size='8pt' style='bold underline' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>	</run><run><font size='8pt' style='bold'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/><field type='text'
+ kind='editable' name='DbRepID'/></run><compositedata type='98' prevtype='65418'
+ nexttype='222' afterparcount='7' containertype='65418' aftercontainercount='1'
+ afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/>	</run><run><font size='8pt'
+ color='blue' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ borderstyle='none' lookupeachchar='false' lookupaddressonrefresh='false'
+ type='keyword' allowmultivalues='true' kind='editable' name='DbTemplate'
+ listinputseparators='comma' listdisplayseparator='comma'><keywords helperbutton='false'
+ columns='1' ui='checkbox'><textlist><text>This database is a template! | 1</text></textlist></keywords></field></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/> </run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'
+ color='gray'/>Disables paste handling</run></par>
+<par def='5'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>	</run><run><font size='8pt' color='silver' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><field type='text' kind='computed'
+ name='DbRepIDLS'><code event='defaultvalue'><formula>repID := DbRepID ;
+
+@Left( repID ; 8 ) + @Right( repID ; 8 )</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/>		</run></par>
+<pardef id='6' leftmargin='0.0104in' spaceafter='1.5' tabs='L2.3618in L5.1181in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='6'><run><font size='8pt' style='bold underline' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>	</run><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/><field type='text' kind='editable'
+ name='DbFilePath'/></run><compositedata type='98' prevtype='65418' nexttype='222'
+ afterparcount='7' containertype='65418' aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run
+><font size='8pt' style='bold underline' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>	</run><run><font size='8pt' color='blue' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field borderstyle='none' lookupeachchar='false'
+ lookupaddressonrefresh='false' type='keyword' allowmultivalues='true' kind='editable'
+ name='DbArchive' listinputseparators='comma' listdisplayseparator='comma'><keywords
+ helperbutton='false' columns='1' ui='checkbox'><textlist><text>This database is a archive ! | 1</text></textlist></keywords></field></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par>
+<table cellbordercolor='silver' leftmargin='0.1451in' widthtype='fixedleft'
+ refwidth='7.3813in'><tablecolumn width='1.0826in'/><tablecolumn width='6.2986in'/>
+<tablerow>
+<tablecell bgcolor='#e1e1e1'>
+<pardef id='8' leftmargin='0.0979in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='8'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Database title:</run></par></tablecell>
+<tablecell bgcolor='white'>
+<pardef id='9' leftmargin='0.0979in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='9'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='2.3625in' borderstyle='inset' type='text' kind='editable' name='DBTitle'/></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell bgcolor='#e1e1e1'>
+<par def='8'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Sub title:</run></par></tablecell>
+<tablecell bgcolor='white'>
+<par def='9'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/><field usenotesstyle='false' height='0.1965in' width='2.3625in'
+ borderstyle='inset' type='text' kind='editable' name='DBSubTitle'/></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell bgcolor='#e1e1e1'>
+<par def='8'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Short name: </run></par></tablecell>
+<tablecell bgcolor='white'>
+<par def='9'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/><field usenotesstyle='false' height='0.1965in' width='1.5750in'
+ borderstyle='inset' type='text' kind='editable' name='DBShortName'/></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow></table>
+<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow>
+<tablerow tablabel='Connections'>
+<tablecell>
+<pardef id='10' leftmargin='0.0104in' tabs='L3.2604in L4.9479in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='10'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/></run></par>
+<pardef id='11' leftmargin='0.0104in' tabs='L3.2604in L4.9479in L10.4326in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='blue'/>* Enter the Replica id:s to use for connecting to other Databases.</run></par>
+<table cellbordercolor='silver' leftmargin='0.0104in' widthtype='fixedleft'
+ cellborderstyle='ridge' rowspacing='0.0278in' refwidth='7.5993in'><tablecolumn
+ width='0.4403in'/><tablecolumn width='1.1708in'/><tablecolumn width='5.9882in'/>
+<tablerow>
+<tablecell rowspan='4' borderwidth='1px 0px 1px 1px' bgcolor='silver'>
+<pardef id='30' align='center' leftmargin='0.0313in' keepwithnext='true' keeptogether='true'/>
+<par def='30'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><actionhotspot
+ hotspotstyle='none'><code event='click'><formula>@Command( [FileOpenDBRepID] ; CustomerRepID ; "" ; viewName ; key ; "" ; "" )</formula></code><run
+><font size='8pt' style='bold' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='gray'/></run></actionhotspot><actionhotspot hotspotstyle='none'><code
+ event='click'><formula>@Command([FileOpenDBRepID]; CustomerRepID ; CustomerServer ; "" ; "" ; "1" ; "1" );
+
+@Command([FileDatabaseInfo])</formula></code><run><font name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='gray'/></run></actionhotspot><run><font
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/></run></par></tablecell>
+<tablecell borderwidth='1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='14' leftmargin='0.0979in' tabs='L3.2604in L5.3229in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='14'><run><font size='8pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par>
+<pardef id='15' leftmargin='0.0875in' tabs='L3.2604in L5.3229in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='15'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>APP</run></par>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='16' hide='notes web' tabs='L3.6674in' keepwithnext='true' keeptogether='true'/>
+<par def='16'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par>
+<table leftmargin='0' widthtype='fixedleft' refwidth='5.8069in'><tablecolumn
+ width='2.7556in'/><tablecolumn width='3.0514in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px'>
+<pardef id='18' spacebefore='1.5' tabs='L5.0160in L7.0785in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='18'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.2188in'
+ width='2.3625in' multiline='true' borderstyle='inset' lookupeachchar='false'
+ lookupaddressonrefresh='false' type='keyword' kind='editable' name='AppRepIDSel'><keywords
+ helperbutton='false' recalconchange='true' columns='4' ui='combobox'><textlist
+><text>Mall Sunnyside VVS | C1257A98:002C3AB6</text><text>Other</text><text
+>-self- | self</text></textlist></keywords></field></run><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell valign='center' borderwidth='0px'>
+<pardef id='19' spacebefore='1.5' keepwithnext='true' keeptogether='true'><code
+ event='hidewhen'><formula>CustomerRepIDSel != "Other"</formula></code></pardef>
+<par def='19'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='1.5750in' multiline='true' borderstyle='single' type='text' kind='editable'
+ name='AppRepIDOther'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='gray'/>  (C12571A0:0031B3BA)</run></par></tablecell></tablerow></table>
+<par def='16'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='0px' bgcolor='white'>
+<pardef id='21' leftmargin='0.0875in' spacebefore='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='21'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Replica ID:</run></par></tablecell>
+<tablecell valign='center' borderwidth='0px 1px 0px 0px' bgcolor='white'>
+<pardef id='22' leftmargin='0' spacebefore='1.5' tabs='L5.0160in L7.0785in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='22'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><run
+><font size='9pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ borderstyle='none' type='text' kind='computed' name='AppRepID'><keywords
+ helperbutton='false' recalconchange='true' recalcchoices='true' columns='3'
+ ui='radiobutton'/><code event='defaultvalue'><formula>replField := AppRepIDSel ;
+replFieldOther := AppRepIDOther ;
+
+@If( replField = "Other" ;  replFieldOther   ;
+replField = "self" ; @ReplicaID ;
+replField )</formula></code></field></run><compositedata type='98' prevtype='65418'
+ nexttype='222' afterparcount='8' containertype='65418' aftercontainercount='1'
+ afterbegincount='4'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='gray'/>                              </run><run
+><font size='8pt' color='#5f5f5f' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='computed' name='AppRepIDLS'><code
+ event='defaultvalue'><formula>repID := AppRepID ;
+
+@Left( repID ; 8 ) + @Right( repID ; 8 )</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='17' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell columnspan='2' borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='25' rightmargin='6.2889in' hide='notes web' tabs='L3.6674in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='25'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par>
+<table leftmargin='0' widthtype='fixedleft' refwidth='7.1743in'><tablecolumn
+ width='1.1708in'/><tablecolumn width='6.0035in'/>
+<tablerow>
+<tablecell borderwidth='0px'>
+<pardef id='27' leftmargin='0.0875in' rightmargin='1.1708in' spacebefore='1.5'
+ keepwithnext='true' keeptogether='true'/>
+<par def='27'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>File path: </run><button width='2in' widthtype='maximum' maxlines='0'
+ wraptext='true' bgcolor='system'><code event='click'><formula>choice := @Prompt([ChooseDatabase];"";"") ;
+
+sep := "¤" ;
+dbInfo := @Implode( choice ; sep ) ;
+
+FIELD CustomerFilePath := @If( choice = 1 ; CustomerFilePath ; @Word( dbInfo ; sep ; 2 ) );
+
+@True</formula></code><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></button><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px'>
+<pardef id='28' leftmargin='0' spacebefore='1.5' hide='read print copy preview embedded'
+ tabs='L3.6674in' keepwithnext='true' keeptogether='true'/>
+<par def='28'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='editable' name='AppFilePath'/></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='7' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow></table>
+<pardef id='29' hide='notes web' tabs='L2.6569in' keepwithnext='true' keeptogether='true'/>
+<par def='29'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='31' leftmargin='0.0875in' spacebefore='1.5' tabs='L3.2604in L5.3229in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='31'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Notes:</run></par></tablecell>
+<tablecell borderwidth='0px 1px 1px 0px' bgcolor='white'>
+<pardef id='32' spacebefore='1.5' tabs='L7.1813in L9.2438in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='32'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ type='text' kind='editable' name='AppNotes'/></run><compositedata type='98'
+ prevtype='65418' nexttype='222' afterparcount='7' containertype='65418' aftercontainercount='1'
+ afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt' style='bold' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='gray'/> </run></par></tablecell></tablerow></table>
+<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='blue'/></run></par>
+<table cellbordercolor='silver' leftmargin='0.0104in' widthtype='fixedleft'
+ cellborderstyle='ridge' rowspacing='0.0278in' refwidth='7.5993in'><tablecolumn
+ width='0.4403in'/><tablecolumn width='1.1708in'/><tablecolumn width='5.9882in'/>
+<tablerow>
+<tablecell rowspan='4' borderwidth='1px 0px 1px 1px' bgcolor='silver'>
+<par def='30'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><actionhotspot
+ hotspotstyle='none'><code event='click'><formula>@Command( [FileOpenDBRepID] ; CustomerRepID ; "" ; viewName ; key ; "" ; "" )</formula></code><run
+><font size='8pt' style='bold' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='gray'/></run></actionhotspot><actionhotspot hotspotstyle='none'><code
+ event='click'><formula>@Command([FileOpenDBRepID]; CustomerRepID ; CustomerServer ; "" ; "" ; "1" ; "1" );
+
+@Command([FileDatabaseInfo])</formula></code><run><font name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='gray'/></run></actionhotspot><run><font
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/></run></par></tablecell>
+<tablecell borderwidth='1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='14'><run><font size='8pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par>
+<par def='15'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>TRANSPORTER</run></par>
+<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='16'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par>
+<table leftmargin='0' widthtype='fixedleft' refwidth='5.8069in'><tablecolumn
+ width='2.7556in'/><tablecolumn width='3.0514in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px'>
+<par def='18'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.2188in'
+ width='2.3625in' multiline='true' borderstyle='inset' lookupeachchar='false'
+ lookupaddressonrefresh='false' type='keyword' kind='editable' name='TransporterRepIDSel'><keywords
+ helperbutton='false' recalconchange='true' columns='4' ui='combobox'><textlist
+><text>MALL | C1257B26:00410F86</text><text>Other</text><text>-self- | self</text></textlist></keywords></field></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell valign='center' borderwidth='0px'>
+<pardef id='33' spacebefore='1.5' keepwithnext='true' keeptogether='true'><code
+ event='hidewhen'><formula>TransporterRepIDSel != "Other"</formula></code></pardef>
+<par def='33'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='1.5750in' multiline='true' borderstyle='single' type='text' kind='editable'
+ name='TransporterRepIDOther'/></run><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='gray'/>  (C12571A0:0031B3BA)</run></par></tablecell></tablerow></table>
+<par def='16'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='0px' bgcolor='white'>
+<par def='21'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Replica ID:</run></par></tablecell>
+<tablecell valign='center' borderwidth='0px 1px 0px 0px' bgcolor='white'>
+<par def='22'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><run
+><font size='9pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ borderstyle='none' type='text' kind='computed' name='TransporterRepID'><keywords
+ helperbutton='false' recalconchange='true' recalcchoices='true' columns='3'
+ ui='radiobutton'/><code event='defaultvalue'><formula>replField := TransporterRepIDSel ;
+replFieldOther := TransporterRepIDOther ;
+
+@If( replField = "Other" ;  replFieldOther   ;
+replField = "self" ; @ReplicaID ;
+replField )</formula></code></field></run><compositedata type='98' prevtype='65418'
+ nexttype='222' afterparcount='7' containertype='65418' aftercontainercount='1'
+ afterbegincount='4'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='gray'/>                              </run><run
+><font size='8pt' color='#5f5f5f' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='computed' name='TransporterRepIDLS'><code
+ event='defaultvalue'><formula>repID := TransporterRepID ;
+
+@Left( repID ; 8 ) + @Right( repID ; 8 )</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='16' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell columnspan='2' borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='25'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par>
+<table leftmargin='0' widthtype='fixedleft' refwidth='7.1743in'><tablecolumn
+ width='1.1708in'/><tablecolumn width='6.0035in'/>
+<tablerow>
+<tablecell borderwidth='0px'>
+<par def='27'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>File path: </run><button width='2in' widthtype='maximum' maxlines='0'
+ wraptext='true' bgcolor='system'><code event='click'><formula>choice := @Prompt([ChooseDatabase];"";"") ;
+
+sep := "¤" ;
+dbInfo := @Implode( choice ; sep ) ;
+
+FIELD TransporterFilePath := @If( choice = 1 ; TransporterFilePath ; @Word( dbInfo ; sep ; 2 ) );
+
+@True</formula></code><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></button><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px'>
+<pardef id='34' leftmargin='0' spacebefore='1.5' tabs='L3.6674in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='34'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='editable' name='TransporterFilePath'/></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='7' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow></table>
+<par def='29'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 1px' bgcolor='white'>
+<par def='31'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Notes:</run></par></tablecell>
+<tablecell borderwidth='0px 1px 1px 0px' bgcolor='white'>
+<par def='32'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ type='text' kind='editable' name='TransporterNotes'/></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ style='bold' name='Verdana' pitch='variable' truetype='true' familyid='20'
+ color='gray'/> </run></par></tablecell></tablerow></table>
+<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par>
+<table cellbordercolor='silver' leftmargin='0.0104in' widthtype='fixedleft'
+ cellborderstyle='ridge' rowspacing='0.0278in' refwidth='7.9000in'><tablecolumn
+ width='0.4403in'/><tablecolumn width='1.1708in'/><tablecolumn width='6.2889in'/>
+<tablerow>
+<tablecell rowspan='4' borderwidth='1px 0px 1px 1px' bgcolor='silver'>
+<pardef id='13' align='center' leftmargin='0.0313in' keepwithnext='true' keeptogether='true'/>
+<par def='13'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><actionhotspot
+ hotspotstyle='none'><code event='click'><formula>@Command( [FileOpenDBRepID] ; CustomerRepID ; "" ; viewName ; key ; "" ; "" )</formula></code><run
+><font size='8pt' style='bold' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='gray'/></run></actionhotspot><run><font name='Verdana'
+ pitch='variable' truetype='true' familyid='20'/></run><actionhotspot hotspotstyle='none'><code
+ event='click'><formula>@Command([FileOpenDBRepID]; AppLogRepId ; AppLogServer ; "" ; "" ; "1" ; "1" );
+
+@Command([FileDatabaseInfo])</formula></code><run><font name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run><picture height='32px' width='32px'
+ scaledheight='0.3333in' scaledwidth='0.3333in' align='bottom'><notesbitmap
+>
+lQAmAAAAAAAAAAAAAAAAAAAAAAAAACAAIAAIAAEACAABAAABAwCWAEYCAAAAAAAAAAAAACAANAJA
+AwDH/AEEQAMAxvzCBML8QAMBxv/C/EADAcb/wvxAAwHE/8L9wvxAAwHD/wEAwgHC/EADAcL/BAP/
+AP/C/EADAQT/A/ukwv/C/EADAQMD+6TC/wEEwvzP/8SkxP8DA/ukwv/CBML8zf/CpML/wgcBAML/
+AwP7pMP/wgTC/Mz/AaTF/8IHBAAD+6TE/8IEwvzF/8Okw/8BpMT/wqQF/wcD+6TF/8IEwvzD/8Kk
+w/8DpACkw//CpMP/BAP7pADF/8IEwvzC/wGkxv8DBwAHxv8DBwOkwgcBAMT/wgQB/ML/AaTD/8IH
+w/8DBwAHw/8EpP8ApML/wgcBAMP/wgTC/wGkwv/CB8T/BQf/BwAHyf/CBwEAwv/CBML/AqQHxf/C
+B8P/AwcAB8n/wgcBAML/AQTC/wEAwgfC/8IHxv8DBwAHyf/CBwEAwv/C/wKkAMIHxf/CB8P/AwcA
+B8n/wgcCAP8B/ML/AqQAwgfC/8IHxv8DBwAHyf/CBwGkwvzC/wKkAMIHyv8DBwAHxf/CpMMAAaTC
+/MP/AqQAwgfK/wMHAAfC/8KkwgABpMP/wvzE/wKkAMIHyf/CBwMAB6TCAAGkxf/C/MX/AqQAwgfF
+/wEHxKQBB8IAAaTF/8IEwvzG/wKkAMIHwv8BB8OkxQABpMb/wgTC/Mf/AqQAwgfDpMIAAaTL/8IE
+wvzI/wSkAAekwgABpM3/wgTC/Mn/AaTCAAGkz//CBML8QAMBxP/CBAH8QAMCxwRABAKXAAYDAAAA
+AACAAAAAgACAgAAAAICAAIAAgIDAwMDA3MCmyvBAIABgIACAIACgIADAIADgIAAAQAAgQABAQABg
+QACAQACgQADAQADgQAAAYAAgYABAYABgYACAYACgYADAYADgYAAAgAAggABAgABggACAgACggADA
+gADggAAAoAAgoABAoABgoACAoACgoADAoADgoAAAwAAgwABAwABgwACAwACgwADAwADgwAAA4AAg
+4ABA4ABg4ACA4ACg4ADA4ADg4AAAAEAgAEBAAEBgAECAAECgAEDAAEDgAEAAIEAgIEBAIEBgIECA
+IECgIEDAIEDgIEAAQEAgQEBAQEBgQECAQECgQEDAQEDgQEAAYEAgYEBAYEBgYECAYECgYEDAYEDg
+YEAAgEAggEBAgEBggECAgECggEDAgEDggEAAoEAgoEBAoEBgoECAoECgoEDAoEDgoEAAwEAgwEBA
+wEBgwECAwECgwEDAwEDgwEAA4EAg4EBA4EBg4ECA4ECg4EDA4EDg4EAAAIAgAIBAAIBgAICAAICg
+AIDAAIDgAIAAIIAgIIBAIIBgIICAIICgIIDAIIDgIIAAQIAgQIBAQIBgQICAQICgQIDAQIDgQIAA
+YIAgYIBAYIBgYICAYICgYIDAYIDgYIAAgIAggIBAgIBggICAgICggIDAgIDggIAAoIAgoIBAoIBg
+oICAoICgoIDAoIDgoIAAwIAgwIBAwIBgwICAwICgwIDAwIDgwIAA4IAg4IBA4IBg4ICA4ICg4IDA
+4IDg4IAAAMAgAMBAAMBgAMCAAMCgAMDAAMDgAMAAIMAgIMBAIMBgIMCAIMCgIMDAIMDgIMAAQMAg
+QMBAQMBgQMCAQMCgQMDAQMDgQMAAYMAgYMBAYMBgYMCAYMCgYMDAYMDgYMAAgMAggMBAgMBggMCA
+gMCggMDAgMDggMAAoMAgoMBAoMBgoMCAoMCgoMDAoMDgoMAAwMAgwMBAwMBgwMCAwMCgwMD/+/Cg
+oKSAgID/AAAA/wD//wAAAP//AP8A//////+YAE4AAAD8/Pz8/Pz8/FNUT1hYXFNNQVNITG9nLm7/
+/////////wAAAAAAAAAAAAD+//r/3d0EBAQEBAQEBJwAAABlbHAAUGFzdGUgZnU=
+</notesbitmap></picture><run><font name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></actionhotspot><run><font name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='14'><run><font size='8pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par>
+<par def='14'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>Appl. Log</run></par></tablecell>
+<tablecell borderwidth='1px 1px 0px 0px' bgcolor='#e1e1e1'>
+<pardef id='35' hide='notes web' tabs='L3.6674in' keepwithnext='true' keeptogether='true'/>
+<par def='35'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par>
+<table leftmargin='0' widthtype='fixedleft' refwidth='5.8069in'><tablecolumn
+ width='2.7556in'/><tablecolumn width='3.0514in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px'>
+<par def='18'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.2188in'
+ width='2.3625in' multiline='true' borderstyle='inset' lookupeachchar='false'
+ lookupaddressonrefresh='false' type='keyword' kind='editable' name='AppLogRepIDSel'><keywords
+ helperbutton='false' recalconchange='true' columns='4' ui='combobox'><textlist
+><text>Mall | C1257A5D:0031891D</text><text>Other</text></textlist></keywords></field></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px'>
+<pardef id='37' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
+<par def='37'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>other </run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='gray'/>(ie </run><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/>C12571A0:0031B3BA</run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'
+ color='gray'/>)</run></par>
+<pardef id='38' keepwithnext='true' keeptogether='true'/>
+<par def='38'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
+ width='1.5750in' multiline='true' borderstyle='single' type='text' kind='editable'
+ name='AppLogRepIDOther'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell></tablerow></table>
+<par def='35'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px' bgcolor='white'>
+<pardef id='39' leftmargin='0.0875in' keepwithnext='true' keeptogether='true'/>
+<par def='39'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='gray'/> </run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/>Replica ID:</run></par></tablecell>
+<tablecell borderwidth='0px 1px 0px 0px' bgcolor='white'>
+<pardef id='40' tabs='L5.0160in L7.0785in' keepwithnext='true' keeptogether='true'/>
+<par def='40'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><run
+><font size='9pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ borderstyle='none' type='text' kind='computed' name='AppLogRepID'><keywords
+ helperbutton='false' recalconchange='true' recalcchoices='true' columns='3'
+ ui='radiobutton'/><code event='defaultvalue'><formula>replField := AppLogRepIDSel ;
+replFieldOther := AppLogRepIDOther ;
+
+@If(replField = "Other" ;  replFieldOther   ; replField )</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='8' containertype='65418'
+ aftercontainercount='1' afterbegincount='4'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/>                              </run><run
+><font size='8pt' color='gray' style='bold' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='computed' name='AppLogRepIDLS'><code
+ event='defaultvalue'><formula>repID := AppLogRepID ;
+
+@Left( repID ; 8 ) + @Right( repID ; 8 )</formula></code></field></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='17' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20' color='gray'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell columnspan='2' borderwidth='0px 1px 0px 0px' bgcolor='#e1e1e1'>
+<par def='25'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par>
+<table leftmargin='0' rightmargin='6.2889in' widthtype='fixedleft' refwidth='6.9778in'><tablecolumn
+ width='1.1708in'/><tablecolumn width='5.8069in'/>
+<tablerow>
+<tablecell borderwidth='0px'>
+<pardef id='42' leftmargin='0.0875in' rightmargin='1.1757in' spacebefore='1.5'
+ keepwithnext='true' keeptogether='true'/>
+<par def='42'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>File path: </run><button width='2in' widthtype='maximum' maxlines='0'
+ wraptext='true' bgcolor='system'><code event='click'><formula>choice := @Prompt([ChooseDatabase];"";"") ;
+
+sep := "¤" ;
+dbInfo := @Implode( choice ; sep ) ;
+
+FIELD AppLogFilePath := @If( choice = 1 ; AppLogFilePath ; @Word( dbInfo ; sep ; 2 ) );
+
+@True</formula></code><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></button><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/></run></par></tablecell>
+<tablecell borderwidth='0px'>
+<pardef id='43' leftmargin='0' spacebefore='1.5' hide='read print copy preview embedded'
+ tabs='L3.6674in' keepwithnext='true' keeptogether='true'/>
+<par def='43'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run><run><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20'/><field type='text' kind='editable' name='AppLogFilePath'/></run><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='7' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt'
+ name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow></table>
+<pardef id='44' hide='notes web' tabs='L2.6569in' keepwithnext='true' keeptogether='true'/>
+<par def='44'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20' color='red'/>Hidden</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='45' leftmargin='0.0979in' spacebefore='1.5' tabs='L3.2604in L5.3229in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='45'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/>Notes:</run></par></tablecell>
+<tablecell borderwidth='0px 1px 1px 0px' bgcolor='white'>
+<pardef id='46' spacebefore='1.5' tabs='L7.1813in L9.2438in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='46'><run><font name='Verdana' pitch='variable' truetype='true' familyid='20'/></run><run
+><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><field
+ type='text' kind='editable' name='AppLogNotes'/></run><compositedata type='98'
+ prevtype='65418' nexttype='222' afterparcount='7' containertype='65418' aftercontainercount='1'
+ afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata><run><font size='8pt' style='bold' name='Verdana'
+ pitch='variable' truetype='true' familyid='20' color='gray'/></run></par></tablecell></tablerow></table>
+<pardef id='12' leftmargin='0.0104in' tabs='L3.2604in L5.3229in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='12'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
+ familyid='20'/></run></par></tablecell></tablerow></table>
+<par def='2'><run html='true'><font size='8pt' name='Verdana' pitch='variable'
+ truetype='true' familyid='20' color='red'/>- DbConnect end--</run></par></richtext></body>
+<item name='OriginalModTime' sign='true'><datetime dst='true'>20070601T171802,55+02</datetime></item>
+<item name='$$ScriptName' summary='false' sign='true'><text> DbConnect</text></item></subform>
+
