@@ -1,88 +1,103 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE view SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
-<view name='Transfers\by FileUID' alias='transfers.fileuid' xmlns='http://www.lotus.com/dxl'
- version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' showinmenu='false'
- publicaccess='false' designerversion='8.5.3' unreadmarks='none' onopengoto='lastopened'
- onrefresh='displayindicator' headers='simple' opencollapsed='false' showresponsehierarchy='false'
- showmargin='true' shrinkrows='false' extendlastcolumn='false' showhierarchies='false'
- unreadcolor='black' rowlinecount='1' headerlinecount='2' rowspacing='1.5'
- bgcolor='#e0f1ff' totalscolor='gray' headerbgcolor='#e0f1ff' boldunreadrows='false'
- evaluateactions='false' allownewdocuments='false' allowcustomizations='true'
- hidemarginborder='false' marginwidth='0px' marginbgcolor='white' gridstyle='solid'
- gridcolor='#0082bf' uniquekeys='false'>
-<noteinfo noteid='1a2' unid='AC78D1EDDC6E1B15C1257BF30049076E' sequence='2'>
+<note class='view' xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1258A40004320EE'>
+<noteinfo noteid='1ba' unid='AC78D1EDDC6E1B15C1257BF30049076E' sequence='5'>
 <created><datetime dst='true'>20130927T151740,30+02</datetime></created>
-<modified><datetime dst='true'>20160427T123913,04+02</datetime></modified>
-<revised><datetime dst='true'>20130927T151858,27+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20160427T123913,04+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20160427T123913,04+02</datetime></addedtofile></noteinfo>
+<modified><datetime dst='true'>20231006T145304,67+02</datetime></modified>
+<revised><datetime dst='true'>20231006T145304,66+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20231006T145304,66+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20231006T141314,90+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
-<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
- event='selection'><formula>SELECT  form = "File" &amp; Deleted = ""</formula></code>
-<actionbar bgcolor='#d4d0c8' bordercolor='black'>
-<actionbuttonstyle bgcolor='#d4d0c8' displayborder='always'/><border width='0px 0px 1px'/></actionbar>
-<column sort='ascending' hidedetailrows='false' itemname='FileUID' width='10.7500'
- resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
- showaslinks='false' deferindexcreation='true'><font size='8pt'/><columnheader
- title='FileUID'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/></columnheader></column>
-<column sort='descending' resort='descending' hidedetailrows='false' itemname='$2'
- width='14' resizable='true' separatemultiplevalues='true' sortnoaccent='false'
- sortnocase='true' showaslinks='false' deferindexcreation='true'><font size='8pt'
- color='maroon' style='italic' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/><columnheader title='Created'><font size='8pt' color='#0060a0'
- name='Verdana' pitch='variable' truetype='true' familyid='20'/></columnheader><datetimeformat
- show='datetime' date='yearmonthday' fourdigityearfor21stcentury='true' time='hourminute'
- zone='never' dateformat='yearmonthdayweekday' dayformat='twodigitday' monthformat='twodigitmonth'
- yearformat='fourdigityear' weekdayformat='shortname' dateseparator1='-' dateseparator2='-'
- dateseparator3=' ' timeseparator=':' timeformat24='true' preference='usersetting'/><numberformat
- format='general' punctuated='false' parens='false' percent='false' bytes='false'/><code
- event='value'><formula>@Created</formula></code></column>
-<column hidedetailrows='false' itemname='$9' width='1.6250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
- showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
->@If( Status = "New" | Status = "" ; 79 ;
-Status = "Processed" ; 82 ;
-0)</formula></code></column>
-<column hidedetailrows='false' itemname='$8' width='1.6250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
- showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
->@If( Type = "Import" | Type = "" ; 111 ;
-Type = "Export" ; 108 ;
-0)</formula></code></column><sharedcolumnref name='icon_Attachments'>
-<column hidedetailrows='false' itemname='$6' width='1.2500' resizable='true'
- separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
- showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
->@If(@Attachments;5;0)</formula></code></column></sharedcolumnref>
-<column resort='ascending' hidedetailrows='false' itemname='$7' width='50.7500'
- resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
- showaslinks='false' deferindexcreation='true'><font size='8pt' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/><columnheader title='Files'><font
- size='8pt' color='#0060a0' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></columnheader><code event='value'><formula>@AttachmentNames</formula></code></column>
-<column align='center' resort='ascending' hidedetailrows='false' itemname='Status'
- width='8.7500' resizable='true' separatemultiplevalues='false' sortnoaccent='false'
- sortnocase='true' showaslinks='false' deferindexcreation='true'><font size='8pt'/><columnheader
- title='Status'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/></columnheader></column>
-<column sort='descending' resort='descending' hidedetailrows='false' itemname='$10'
- width='12.2500' resizable='true' separatemultiplevalues='true' sortnoaccent='false'
- sortnocase='true' showaslinks='false' deferindexcreation='true'><font size='8pt'
- style='italic' name='Verdana' pitch='variable' truetype='true' familyid='20'/><columnheader
- title='Updated'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/></columnheader><datetimeformat show='datetime'
- date='yearmonthday' fourdigityearfor21stcentury='true' time='hourminute'
- zone='never' dateformat='yearmonthdayweekday' dayformat='twodigitday' monthformat='twodigitmonth'
- yearformat='fourdigityear' weekdayformat='shortname' dateseparator1='-' dateseparator2='-'
- dateseparator3=' ' timeseparator=':' timeformat24='true' preference='usersetting'/><numberformat
- format='general' punctuated='false' parens='false' percent='false' bytes='false'/><code
- event='value'><formula>@Modified</formula></code></column>
-<column hidedetailrows='false' itemname='StatusMessage' width='58.3750' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><font
- size='8pt' color='blue' name='Verdana' pitch='variable' truetype='true' familyid='20'/><columnheader
- title='StatusMessage'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/></columnheader></column></view>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$TITLE' sign='true'><text>Transfers\by FileUID|transfers.fileuid</text></item>
+<item name='$Index' sign='true'><text/></item>
+<item name='$Formula' summary='true' sign='true'><formula compiled='true'>
+6AECAAwAAgAkMmkAAwACAIIAAgAkOQUABgBTdGF0dXMBAAMATmV3AAoCBQAGAFN0YXR1cwEAAAAK
+Ah0CrwBQABAAAAAAAAAAAMBTQK4AQAAFAAYAU3RhdHVzAQAJAFByb2Nlc3NlZAAKAq8AIgAQAAAA
+AAAAAACAVECuABIAAAAAAAAAAAAAAK4ABAC1BQMAAgB6AAIAJDgFAAQAVHlwZQEABgBJbXBvcnQK
+AgUABABUeXBlAQAAAAoCHQKvAEoAEAAAAAAAAAAAwFtArgA6AAUABABUeXBlAQAGAEV4cG9ydAoC
+rwAiABAAAAAAAAAAAABbQK4AEgAAAAAAAAAAAAAArgAEALUFAwACADAAAgAkNnIArwAiABAAAAAA
+AAAAAAAUQK4AEgAAAAAAAAAAAAAArgAEALUDAwACAAwAAgAkN3MAAwACAA4AAwAkMTAApAADAAUA
+TABIAAoABwACAAIAAgACAAIABgADAA0ACQBGaWxlVUlEJDIkOSQ4JDYkN1N0YXR1cyQxMFN0YXR1
+c01lc3NhZ2UkQ29uZmxpY3QEAAQAAAAsAAUABABmb3JtAQAEAEZpbGUKAgUABwBEZWxldGVkAAEA
+AAAKAhwCAwAHABgAEgAJTDFTMkUyUzNTNFM1UzZTN1M=
+</formula></item>
+<item name='$Collation' summary='true'>
+<rawitemdata type='2'>
+JwADAABEgGYAAAAHAIlmAAcAAgCJZgAJAAMARmlsZVVJRCQyJDEw
+</rawitemdata></item>
+<item name='$Collation1' summary='true'>
+<rawitemdata type='2'>
+DwABAAJEiWYAAAACACQy
+</rawitemdata></item>
+<item name='$Collation2' summary='true'>
+<rawitemdata type='2'>
+DwABAAJEgGYAAAACACQ3
+</rawitemdata></item>
+<item name='$Collation3' summary='true'>
+<rawitemdata type='2'>
+EwABAAJEgGYAAAAGAFN0YXR1cw==
+</rawitemdata></item>
+<item name='$Collation4' summary='true'>
+<rawitemdata type='2'>
+EAABAAJEiWYAAAADACQxMA==
+</rawitemdata></item>
+<item name='$Fonts' sign='true'><textlist><text>5</text><text>38</text><text
+>Verdana</text><text>6</text><text>38</text><text>Verdana</text><text>7</text><text
+>38</text><text>Verdana</text><text>8</text><text>38</text><text>Verdana</text><text
+>9</text><text>38</text><text>Verdana</text><text>10</text><text>38</text><text
+>Verdana</text><text>11</text><text>38</text><text>Verdana</text><text>12</text><text
+>38</text><text>Verdana</text><text>13</text><text>38</text><text>Verdana</text><text
+>14</text><text>38</text><text>Verdana</text><text>15</text><text>38</text><text
+>Verdana</text><text>16</text><text>38</text><text>Verdana</text><text>17</text><text
+>38</text><text>Verdana</text></textlist></item>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$Flags'><text>Y</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$ViewFormat' sign='true'>
+<rawitemdata type='5'>
+AQAJAAAACgQAAFZDAQAHAAcAAAAAAFYAAQAACAAAAAAAAAAAAAICAAAAVkMFAgIABwAOAAAAcAAF
+AggIAAEAAAAAAAEAAgIAAABWQ0AAAgAAALYAAAANAAEAAAoAAAAAAAAAAAACAgAAAFZDQAACAAAA
+rgAAAA0AAQAACgAAAAAAAAAAAAICAAAAVkNAAAIAAAA+AAAACgABAAAKAAAAAAAAAAAAAgIAAABW
+QwABAgAFAA4AAAAwAgYAAAgAAAAAAAAAAAACAgAAAFZDAAEGAAYAAAAAAEYAAQAACAIAAAAAAAAA
+AAICAAAAVkMFAgMABwAQAAAAYgAHAgAIAAEAAAAAAAEAAgIAAABWQwAADQANAAAAAADTAQgABAgA
+AAAAAAAAAAACAgAAAEZpbGVVSURGaWxlVUlEJDJDcmVhdGVkDgACAAwAAgAkMmkAAwAkObYAAgCC
+AAIAJDkFAAYAU3RhdHVzAQADAE5ldwAKAgUABgBTdGF0dXMBAAAACgIdAq8AUAAQAAAAAAAAAADA
+U0CuAEAABQAGAFN0YXR1cwEACQBQcm9jZXNzZWQACgKvACIAEAAAAAAAAAAAgFRArgASAAAAAAAA
+AAAAAACuAAQAtQUDAAcAMgAsAAkyUzNTNFM1UzZTN1M4UzlTMTBTMTFTMTJSMTNTMTRTMTVTMTZT
+MTdTMThSJDiuAAIAegACACQ4BQAEAFR5cGUBAAYASW1wb3J0CgIFAAQAVHlwZQEAAAAKAh0CrwBK
+ABAAAAAAAAAAAMBbQK4AOgAFAAQAVHlwZQEABgBFeHBvcnQKAq8AIgAQAAAAAAAAAAAAW0CuABIA
+AAAAAAAAAAAAAK4ABAC1BQMABwAyACwACTJTM1M0UzVTNlM3UzhTOVMxMFMxMVMxMlIxM1MxNFMx
+NVMxNlMxN1MxOFIkNj4AAgAwAAIAJDZyAK8AIgAQAAAAAAAAAAAAFECuABIAAAAAAAAAAAAAAK4A
+BAC1AwMABwAMAAUACTBTMEUAJDdGaWxlcw4AAgAMAAIAJDdzAAMAU3RhdHVzU3RhdHVzJDEwVXBk
+YXRlZBAAAgAOAAMAJDEwAKQAAwBTdGF0dXNNZXNzYWdlU3RhdHVzTWVzc2FnZSYABwAAAAEBAAkB
+AAAKAQEOCgAAAQCtKwECGAACAAAAAAAAAAAAV0MJAIcIAAAAAAAAAAAAAAAAAAAAAAAABIAAAAAA
+//8AAAAAAAAAAAAAAAAAAFdDCgCHCAAAAAAAAAAAAAAAAAAAAAAAAMSAAAAAAP//AAAAAAAAAAAA
+AAAAAABXQwsAhwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAV0MMAIcI
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAFdDDQCHCAAAAAAAAAAAAAAA
+AAAAAAAAAAAgAAAAAP//AAAAAAAAAAAAAAAAAABXQw4AhwgAAAAAAAAAAAAAAAAAAAAAAAAEgAAA
+AAD//wAAAAAAAAAAAAAAAAAAV0MPAIcIAAAAAAAAAAAAAAAAAAAAAAAABIAAAAAA//8AAAAAAAAA
+AAAAAAAAAFdDEACHCAAAAAAAAAAAAAAAAAAAAAAAAMSAAAAAAP//AAAAAAAAAAAAAAAAAABXQxEA
+hwgAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAD//wAAAAAAAAAAAAAAAAAAQgABAAAAAQDg8f8ABQD/
+//8AAQAAgr8AAAAAAAAAAAABAP///wABAODx/wAAAAEAAAAAAAEAgICAAAEAAAAAAAAACAAAAAAA
+AQBYQwBMgAEAAAAAAAECAgIBAQEBBwQCAAAAAAAAAAAtLSA6WEMATIABAAAAAAABAgICAQEBAQcE
+AgAAAAAAAAAALS0gOllDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAABZQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAEABpY29uX0F0dGFjaG1lbnRzYUNUAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYUNUAAgAAAAA
+AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAYUNUAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYUNUAAgAAAAAAAAA
+AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAYUNUAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</rawitemdata></item>
+<item name='$V5ACTIONS' sign='true'>
+<rawitemdata type='1'>
+vRwjAAAAAQABAAAAAQAAAAAAAAAAAAAACAAAAHn/bAABANTQyAABAAAAAAABAAAAAAABANTQyAAB
+AB8AAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAPz/OgAAAAAAAAAAAAAAAQAAAAAAAAAAAAwAAAAAAAAAAAAA
+AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=
+</rawitemdata></item></note>
 

@@ -1,28 +1,52 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE agent SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
-<agent name='> Admin\Database Profile' xmlns='http://www.lotus.com/dxl' version='12.0'
- maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='web v3' publicaccess='false'
- designerversion='8.5.3' restrictions='unrestricted'>
-<noteinfo noteid='15e' unid='E8D82835B43E636CC1257B26004FC70F' sequence='1'>
+<note class='filter' xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1258A40004320EE'>
+<noteinfo noteid='15e' unid='E8D82835B43E636CC1257B26004FC70F' sequence='5'>
 <created><datetime>20130306T153123,03+01</datetime></created>
-<modified><datetime dst='true'>20160427T123912,68+02</datetime></modified>
-<revised><datetime>20130306T153125,17+01</datetime></revised>
-<lastaccessed><datetime dst='true'>20160427T123912,68+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20160427T123912,68+02</datetime></addedtofile></noteinfo>
+<modified><datetime dst='true'>20231006T143014,28+02</datetime></modified>
+<revised><datetime dst='true'>20231006T143014,27+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20231006T143014,27+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20231006T143014,26+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
-<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
-<designchange><datetime>20130305T101909,75+01</datetime></designchange>
-<trigger type='actionsmenu'/>
-<documentset type='runonce'/><code event='action'>
-<simpleaction action='runformula'><formula>Answer :=  @Prompt([Password]; "Password" ; "Enter password" );
-@If( Answer != "ynnus1301" ; @Return(@Prompt([Ok]; "Error message" ; "Wrong password. (Passwords are case sensitive - be sure to use correct upper and lower case.)" )) ; "" );SELECT
-
-@Command( [EditProfile] ; "DatabaseProfile" )</formula></simpleaction></code>
-<rundata processeddocs='0' exitcode='0'>
-<agentmodified><datetime dst='true'>20130517T160322,31+02</datetime></agentmodified>
-<agentrun><datetime dst='true'>20130822T131721,73+02</datetime></agentrun>
-<runlog>Started running agent '&gt; Admin\Database Profile' on 2013-08-22 13:17:15
-1 document(s) were modified by formula
-Done running agent '&gt; Admin\Database Profile' on 2013-08-22 13:17:21
-</runlog></rundata></agent>
+<item name='$TITLE' sign='true'><text>&gt; Admin\Database Profile</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$Restricted' sign='true'><number>0</number></item>
+<item name='$AssistVersion'><datetime dst='true'>20231006T143215,05+02</datetime></item>
+<item name='$AssistTrigger'><text>4</text></item>
+<item name='$AssistAction' sign='true'>
+<rawitemdata type='10'>
+gQKE/3IBAAAAAGgBaAEBADgABgBBbnN3ZXICABYAAAAAAAAAAQAIAFBhc3N3b3JkAQAOAEVudGVy
+IHBhc3N3b3JksAMDAAcAFgAPAAkxUzJTMkU2UzdTOFM5UwAIALYABQAGAEFuc3dlcgEACQB5bm51
+czEzMDEACwKvAJQAiAACAA0AAAAAAAAAAQANAEVycm9yIG1lc3NhZ2UAAQBdAFdyb25nIHBhc3N3
+b3JkLiAoUGFzc3dvcmRzIGFyZSBjYXNlIHNlbnNpdGl2ZSAtIGJlIHN1cmUgdG8gdXNlIGNvcnJl
+Y3QgdXBwZXIgYW5kIGxvd2VyIGNhc2UuKQCwA8IBrgAMAAEAAACuAAQAtQMDAAcAKAAiAAkwUjJT
+M1M0UzVTNlMxMlMxM1MxNFMxNVMxN1MxOFMxOVMAACYAAgANGAAAAAAAAAEADwBEYXRhYmFzZVBy
+b2ZpbGUA7QIDAAcAFAANAAlMMVJSM1M0UzVTNlMA
+</rawitemdata></item>
+<item name='$AssistAction_Ex' sign='true'>
+<rawitemdata type='14'>
+gQI=
+</rawitemdata></item>
+<item name='$AssistType' sign='true'><number>65412</number></item>
+<item name='$AssistFlags' sign='true'><text>sE</text></item>
+<item name='$AssistInfo' sign='true'>
+<rawitemdata type='11'>
+AQAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</rawitemdata></item>
+<item name='$AssistQuery' sign='true'>
+<rawitemdata type='f'>
+gQYAAAAA
+</rawitemdata></item>
+<item name='$AssistLastRun' sign='true'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='$AssistDocCount' sign='true'><number>0</number></item>
+<item name='$AssistRunInfo' summary='true'>
+<rawitemdata type='3'>
+BgABAAAACAC2BAAAAAAAAAEAAAAAAAAAAAAAAA==
+</rawitemdata></item>
+<item name='$Flags'><text>3fw</text></item>
+<item name='$FlagsExt' sign='true'><text/></item></note>
 

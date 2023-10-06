@@ -1,39 +1,58 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE agent SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
-<agent name='Delete Documents' alias='DeleteDocuments' xmlns='http://www.lotus.com/dxl'
- version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='v3'
- publicaccess='false' designerversion='8.5.3' comment='Delete log documents after 3 Months'
- activatable='false' enabled='false'>
-<noteinfo noteid='1de' unid='2EA3EE6C8E3D6942C1257FA1002F7AD2' sequence='10'>
+<note class='filter' xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1258A40004320EE'>
+<noteinfo noteid='1c2' unid='2EA3EE6C8E3D6942C1257FA1002F7AD2' sequence='13'>
 <created><datetime dst='true'>20160426T103836,34+02</datetime></created>
-<modified><datetime dst='true'>20160427T124726,77+02</datetime></modified>
-<revised><datetime dst='true'>20160427T124446,47+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20160427T124726,77+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20160427T124726,77+02</datetime></addedtofile></noteinfo>
+<modified><datetime dst='true'>20231006T143014,00+02</datetime></modified>
+<revised><datetime dst='true'>20231006T143013,99+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20231006T143013,99+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20231006T143013,98+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
-<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
-<designchange><datetime dst='true'>20160427T124500,63+02</datetime></designchange>
-<trigger type='scheduled'>
-<schedule type='weekly' dayofweek='saturday' runlocation='choose'>
-<starttime><datetime>T020000,00</datetime></starttime></schedule></trigger>
-<documentset type='all'/><code event='action'>
-<simpleaction action='runformula'><formula>SELECT @All ;
-docStatus := Status ;
-dateDoc := @Created ;
-
-REM {Initial Validation} ;
-@If( Form != "File" ;
-	@Return("");
-docStatus = "New" ;
-	@Return("");
-"" );
-
-REM {Delete after 3 months} ;
-dateDel := @Adjust( @Today ;0;-3;0;0;0;0 );
-
-REM {DELETE Document} ;
-@If( Form = "File" &amp; docStatus != "New" &amp; (dateDoc &lt; dateDel) ; @Return( @DeleteDocument ) ; "" )</formula></simpleaction></code>
-<rundata processeddocs='0' exitcode='0'>
-<agentmodified><datetime dst='true'>20160427T124500,63+02</datetime></agentmodified></rundata>
-<item name='$POID'><datetime dst='true'>20160427T124446,47+02</datetime></item></agent>
+<item name='$TITLE' sign='true'><text>Delete Documents|DeleteDocuments</text></item>
+<item name='$Comment'><text>Delete log documents after 3 Months</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$Restricted' sign='true'><number>1</number></item>
+<item name='$AssistVersion'><datetime dst='true'>20231006T143214,73+02</datetime></item>
+<item name='$AssistTrigger'><text>1</text></item>
+<item name='$AssistAction' sign='true'>
+<rawitemdata type='10'>
+gQKE/2wCAAAAAGICYgIAAAgAZgADAAcADAAGAAlMMVMyUwEAHAAJAGRvY1N0YXR1cwAFAAYAU3Rh
+dHVzAwAHABAACQAJMFIxUzJTM1MAAQASAAcAZGF0ZURvYwBpAAMABwAQAAkACTBSMVMyUzNTAAcA
+GAASAEluaXRpYWwgVmFsaWRhdGlvbgcADgAIAAkwUlIxUzJTCABaAAUABABGb3JtAQAEAEZpbGUL
+Aq8AQAAMAAEAAADCAa4ANAAFAAkAZG9jU3RhdHVzAAEAAwBOZXcACgKvABgADAABAAAAwgGuAAwA
+AQAAAK4ABAC1BQMABwAqACQACTBSMlMzUzRTNVM2UlQxMVIxMlMxM1MxNFMxNVJUMjBSMjFTBwAc
+ABUARGVsZXRlIGFmdGVyIDMgbW9udGhzAAcADgAIAAkwUlIxUzJTAQBSAAcAZGF0ZURlbAAtAAAA
+AAAAAAAAAAAAAAAAAAAAAAhAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAATQcDAAcAFAAOAAkwUjFTMlM0UzVTMThTBwAWAA8AREVMRVRFIERvY3VtZW50AAcADgAIAAkw
+UlIxUzJTCABoAAUABABGb3JtAQAEAEZpbGUKAgUACQBkb2NTdGF0dXMAAQADAE5ldwALAhwCBQAH
+AGRhdGVEb2MABQAHAGRhdGVEZWwADgIEABwCrwAWAAoAvQDCAa4ADAABAAAArgAEALUDAwAHADgA
+MQAJMFIyUzNTNFM1UzZTN1M4UzlTMTBTMTJTMTNTMTVTMTZTMThTMTlTMjBTMjFTMjJTAA==
+</rawitemdata></item>
+<item name='$AssistAction_Ex' sign='true'>
+<rawitemdata type='14'>
+gQI=
+</rawitemdata></item>
+<item name='$AssistType' sign='true'><number>65412</number></item>
+<item name='$AssistFlags' sign='true'><text>s</text></item>
+<item name='$POID'><datetime dst='true'>20160427T124446,47+02</datetime></item>
+<item name='$AssistInfo' sign='true'>
+<rawitemdata type='11'>
+AQABAAEAAwABAID8CgAHAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</rawitemdata></item>
+<item name='$AssistQuery' sign='true'>
+<rawitemdata type='f'>
+gQYAAAAA
+</rawitemdata></item>
+<item name='$AssistLastRun' sign='true'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='$AssistDocCount' sign='true'><number>0</number></item>
+<item name='$AssistRunInfo' summary='true'>
+<rawitemdata type='3'>
+BgABAAAACACuBAAAAAAAAAEAAAAAAAAAAAAAAA==
+</rawitemdata></item>
+<item name='$Flags'><text>3fS</text></item>
+<item name='$FlagsExt' sign='true'><text/></item></note>
 
