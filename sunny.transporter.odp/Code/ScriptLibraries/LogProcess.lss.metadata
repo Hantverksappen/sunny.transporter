@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><note xmlns="http://www.lotus.com/dxl" class="filter" maintenanceversion="2.2" replicaid="C1258A40004320EE" version="12.0">
+<noteinfo noteid="1ae" sequence="15" unid="5720B3E083133FECC1257B310054E331">
+<created><datetime>20130317T162711,85+01</datetime></created>
+<modified><datetime>20240207T160913,22+01</datetime></modified>
+<revised><datetime>20240207T160913,21+01</datetime></revised>
+<lastaccessed><datetime>20240207T160913,21+01</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20231006T141314,87+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Gunnar Bridell/O=Solute</name><name>CN=xSPDev/O=xSPDev</name><name>CN=Administrator/O=Sunnyside</name><name>CN=Gunnar Bridell/O=Solute</name><name>CN=SOLUTEEXT/O=Solute</name><name>CN=Anders Magnusson/O=Solute</name><name>CN=Gunnar Bridell/O=Solute</name><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<item name="$PublicAccess" sign="true"><text>1</text></item>
+<item name="$TITLE" sign="true"><text>LogProcess</text></item>
+<item name="$DesignerVersion" sign="true"><text>8.5.3</text></item>
+<item name="$POID"><datetime>20130319T150718,35+01</datetime></item>
+<item name="$Flags"><text>s34Q</text></item>
+
+</note>

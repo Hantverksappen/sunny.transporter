@@ -7,11 +7,11 @@ Option Declare
 '++LotusScript Development Environment:2:5:(Forward):0:1
 Declare Class appLog
 Declare Sub Initialize
-Declare Function SecondsToTimeString( secInput As Double , separator As String , result As String ) As String
-Declare Sub AgentCodeExample
+Declare Function LogDocProcess( logAction As String, logPrintMsg As String, logApplName As String, logActivityName As String ) As String
 Declare Function LogPrint( logPrintMsg As String ) As String
 Declare Sub CalcExeTime
-Declare Function LogDocProcess( logAction As String, logPrintMsg As String, logApplName As String, logActivityName As String ) As String
+Declare Sub AgentCodeExample
+Declare Function SecondsToTimeString( secInput As Double , separator As String , result As String ) As String
 
 '++LotusScript Development Environment:2:5:(Declarations):0:10
 Private session As NotesSession
@@ -85,153 +85,6 @@ Sub Initialize
 	Set dbLog = New NotesDatabase( "", "" )
 End Sub
 
-'++LotusScript Development Environment:2:1:SecondsToTimeString:1:8
-Function SecondsToTimeString( secInput As Double , separator As String , result As String ) As String
-	Const sec1hour = 3600
-	Const sec1min = 60
-	Dim hourResult As Single
-	Dim minResult As Single
-	Dim secResult As Single
-	Dim hourStr As String
-	Dim minStr As String
-	Dim secStr As String
-	Dim secRemain As Single
-	
-	On Error Goto ErrorHandler
-	Stop
-	'... Calc hour, minutes and seconds
-	secRemain = secInput
-	If secInput >= sec1hour Then
-		hourResult = Fix( secInput / sec1hour )
-		secRemain = secInput Mod sec1hour
-	Else
-		hourResult = 0
-	End If
-	
-	minResult = Fix( secRemain / sec1min )
-	
-	secResult = secRemain Mod sec1min
-	
-	'...Convert to text
-	hourStr = Right( "0" & Cstr( hourResult ) , 2 )
-	minStr = Right( "0" & Cstr( minResult ) , 2 )
-	secStr =Right( "0" & Cstr( secResult ) , 2 )
-	
-	SecondsToTimeString = hourStr & separator & minStr & separator & secStr
-	
-ExitPoint:
-	Exit Function
-	
-ErrorHandler:
-	result = "Error. Unknown error." & Getthreadinfo(1) & Chr(10) & "[" & Err() & "] " & Error() &  " (agent row no: " & Erl() & ")"
-	Goto ExitPoint
-	
-End Function
-
-'++LotusScript Development Environment:2:2:AgentCodeExample:1:8
-Sub AgentCodeExample
-	
-%REM
-'Copy this Script Library Object into appropriate database
-'Following examples can be inserted in scripted code to log events
-
-'---Options example:
-Use "CreateLogDocument"
-
-'---Dim exaple:
-			Dim logApplName As String
-			Dim logActivityName As String
-			Dim logAction As String
-			Dim logPrintMsg As String
-			Dim logStatus As String
-			On Error Goto ErrorHandler
-
-'---Start example:
-			logApplName = "Exakt Utfall"
-			logActivityName = "GetOrderStatisticsUpdate"
-			logAction = "start"
-			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
-
-'---Print example - to be inserted in code to log specific events
-			logPrintMsg = "Enter log message here..."
-			logStatus = LogPrint( logPrintMsg )
-
-'---End example:
-			logAction = "end"
-			logPrintMsg = "Activity ended"
-			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
-			End
-
-'---Send mail example:
-			logApplName = "Exakt Utfall"
-			logActivityName = "GetOrderStatisticsUpdate"
-			logAction = "mail"
-			logPrintMsg = "Enter mail message here"
-			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
-
-'---Controlled Error example:
-			logAction = "error"
-			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
-
-'---Uncontrolled error handler example:
-ErrorHandler:
-		Dim agent as NotesAgent
-		Set agent = session.CurrentAgent
-		logAction = "error"
-		logPrintMsg = "Scriptfel i " & agent.Name & " - " & Getthreadinfo(1) & Chr(10) & Err() & " " & Error() &  ". Fel på rad " & Erl()
-		logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
-		End
-
-%ENDREM
-	
-End Sub
-
-'++LotusScript Development Environment:2:1:LogPrint:3:8
-'---Print message to log document
-
-Function LogPrint( logPrintMsg As String ) As String
-	
-	On Error Goto ErrorHandler
-	
-	Dim rtBody As NotesRichTextItem	
-	Dim rtStyle As NotesRichTextStyle
-	
-	Set rtBody = docLog.GetFirstItem( "Body" )
-	Set rtStyle = session.CreateRichTextStyle
-	rtStyle.FontSize = 8
-	rtStyle.NotesFont = FONT_COURIER
-	Call rtBody.AppendStyle(rtStyle)
-	Call rtBody.AppendText( logPrintMsg )
-	Call rtBody.AddNewLine(1)
-	'Call docLog.Save( True, False )
-	
-	LogPrint = "ok"
-	Exit Function
-	
-ErrorHandler:
-	LogPrint = "error"
-	
-	Exit Function
-	
-	
-End Function
-
-'++LotusScript Development Environment:2:2:CalcExeTime:1:8
-Sub CalcExeTime
-	Dim dtStart As New NotesDateTime( docLog.StartTime(0) )
-	Dim dtEnd As New NotesDateTime( docLog.EndTime(0) )
-	Dim result As String
-	Dim exeSec As Double
-	Dim exeTimeString As String
-	
-	exeSec = dtEnd.TimeDifferenceDouble( dtStart )
-	docLog.ExeTime = exeSec
-	
-	exeTimeString = SecondsToTimeString( exeSec , ":" , result )
-	docLog.ExeTimeString = exeTimeString
-	
-End Sub
-
 '++LotusScript Development Environment:2:1:LogDocProcess:7:8
 '---The Log function starts here !!
 
@@ -251,7 +104,11 @@ Function LogDocProcess( logAction As String, logPrintMsg As String, logApplName 
 		
 	'=== Open Log database (use same db if log-db can't be found)
 	If Not dbLog.IsOpen Then
-		If Not dbLog.OpenByReplicaID( db.Server , db.GetprofileDocument( "DatabaseProfile" ).AppLogRepIDLS(0) ) Then
+		Dim replicaId As String
+		replicaId = db.GetprofileDocument( "DatabaseProfile" ).AppLogRepIDLS(0)
+		If replicaId = "" Then
+			Set dbLog = db
+		ElseIf Not dbLog.OpenByReplicaID( db.Server , replicaId ) Then
 			Set dbLog = db
 		End If
 	End If
@@ -368,3 +225,151 @@ ErrorHandler:
 	
 End Function
 
+
+
+'++LotusScript Development Environment:2:1:LogPrint:3:8
+'---Print message to log document
+
+Function LogPrint( logPrintMsg As String ) As String
+	
+	On Error Goto ErrorHandler
+	
+	Dim rtBody As NotesRichTextItem	
+	Dim rtStyle As NotesRichTextStyle
+	
+	Set rtBody = docLog.GetFirstItem( "Body" )
+	Set rtStyle = session.CreateRichTextStyle
+	rtStyle.FontSize = 8
+	rtStyle.NotesFont = FONT_COURIER
+	Call rtBody.AppendStyle(rtStyle)
+	Call rtBody.AppendText( logPrintMsg )
+	Call rtBody.AddNewLine(1)
+	'Call docLog.Save( True, False )
+	
+	LogPrint = "ok"
+	Exit Function
+	
+ErrorHandler:
+	LogPrint = "error"
+	
+	Exit Function
+	
+	
+End Function
+
+'++LotusScript Development Environment:2:2:CalcExeTime:1:8
+Sub CalcExeTime
+	Dim dtStart As New NotesDateTime( docLog.StartTime(0) )
+	Dim dtEnd As New NotesDateTime( docLog.EndTime(0) )
+	Dim result As String
+	Dim exeSec As Double
+	Dim exeTimeString As String
+	
+	exeSec = dtEnd.TimeDifferenceDouble( dtStart )
+	docLog.ExeTime = exeSec
+	
+	exeTimeString = SecondsToTimeString( exeSec , ":" , result )
+	docLog.ExeTimeString = exeTimeString
+	
+End Sub
+
+'++LotusScript Development Environment:2:2:AgentCodeExample:1:8
+Sub AgentCodeExample
+	
+%REM
+'Copy this Script Library Object into appropriate database
+'Following examples can be inserted in scripted code to log events
+
+'---Options example:
+Use "CreateLogDocument"
+
+'---Dim exaple:
+			Dim logApplName As String
+			Dim logActivityName As String
+			Dim logAction As String
+			Dim logPrintMsg As String
+			Dim logStatus As String
+			On Error Goto ErrorHandler
+
+'---Start example:
+			logApplName = "Exakt Utfall"
+			logActivityName = "GetOrderStatisticsUpdate"
+			logAction = "start"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+
+'---Print example - to be inserted in code to log specific events
+			logPrintMsg = "Enter log message here..."
+			logStatus = LogPrint( logPrintMsg )
+
+'---End example:
+			logAction = "end"
+			logPrintMsg = "Activity ended"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+			End
+
+'---Send mail example:
+			logApplName = "Exakt Utfall"
+			logActivityName = "GetOrderStatisticsUpdate"
+			logAction = "mail"
+			logPrintMsg = "Enter mail message here"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+
+'---Controlled Error example:
+			logAction = "error"
+			logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+
+'---Uncontrolled error handler example:
+ErrorHandler:
+		Dim agent as NotesAgent
+		Set agent = session.CurrentAgent
+		logAction = "error"
+		logPrintMsg = "Scriptfel i " & agent.Name & " - " & Getthreadinfo(1) & Chr(10) & Err() & " " & Error() &  ". Fel på rad " & Erl()
+		logStatus = LogDocProcess( logAction, logPrintMsg, logApplName, logActivityName )
+		End
+
+%ENDREM
+	
+End Sub
+
+'++LotusScript Development Environment:2:1:SecondsToTimeString:1:8
+Function SecondsToTimeString( secInput As Double , separator As String , result As String ) As String
+	Const sec1hour = 3600
+	Const sec1min = 60
+	Dim hourResult As Single
+	Dim minResult As Single
+	Dim secResult As Single
+	Dim hourStr As String
+	Dim minStr As String
+	Dim secStr As String
+	Dim secRemain As Single
+	
+	On Error Goto ErrorHandler
+	Stop
+	'... Calc hour, minutes and seconds
+	secRemain = secInput
+	If secInput >= sec1hour Then
+		hourResult = Fix( secInput / sec1hour )
+		secRemain = secInput Mod sec1hour
+	Else
+		hourResult = 0
+	End If
+	
+	minResult = Fix( secRemain / sec1min )
+	
+	secResult = secRemain Mod sec1min
+	
+	'...Convert to text
+	hourStr = Right( "0" & Cstr( hourResult ) , 2 )
+	minStr = Right( "0" & Cstr( minResult ) , 2 )
+	secStr =Right( "0" & Cstr( secResult ) , 2 )
+	
+	SecondsToTimeString = hourStr & separator & minStr & separator & secStr
+	
+ExitPoint:
+	Exit Function
+	
+ErrorHandler:
+	result = "Error. Unknown error." & Getthreadinfo(1) & Chr(10) & "[" & Err() & "] " & Error() &  " (agent row no: " & Erl() & ")"
+	Goto ExitPoint
+	
+End Function
