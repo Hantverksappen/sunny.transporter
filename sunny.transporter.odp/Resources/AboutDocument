@@ -1,137 +1,73 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE helpaboutdocument SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
-<helpaboutdocument xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
- replicaid='C1257FA2003A850E' publicaccess='false' designerversion='8.5.3'
- default='true' renderpassthrough='true'>
-<noteinfo noteid='172' unid='54418892616E016BC1257BF200508A07' sequence='5'>
+<note default='true' class='helpaboutdocument' xmlns='http://www.lotus.com/dxl'
+ version='12.0' maintenanceversion='2.1' replicaid='C1257B2600410F86'>
+<noteinfo noteid='27e' unid='54418892616E016BC1257BF200508A07' sequence='12'>
 <created><datetime dst='true'>20130926T163942,15+02</datetime></created>
-<modified><datetime dst='true'>20160427T125949,61+02</datetime></modified>
-<revised><datetime dst='true'>20160427T125827,06+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20160427T125949,61+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20160427T123912,78+02</datetime></addedtofile></noteinfo>
+<modified><datetime>20240215T140236,81+01</datetime></modified>
+<revised><datetime>20240215T140236,80+01</datetime></revised>
+<lastaccessed><datetime>20240215T140236,80+01</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20210331T131817,18+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
 <wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
-<body><richtext>
-<pardef id='1'/>
-<par def='1'><run><font size='14pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par>
-<par def='1'><run><font size='14pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Sunnyside - </run><run><font size='14pt' style='bold' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/><computedtext><code event='value'><formula
->@DbTitle</formula></code></computedtext></run><run><font size='14pt' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></run></par>
-<par def='1'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par>
-<par def='1'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par>
-<table minrowheight='0.3938in' cellbordercolor='silver' widthtype='fixedleft'
- rowspacing='0.0396in' columnspacing='0.0785in' refwidth='8.2313in'><tablecolumn
- width='1.6771in'/><tablecolumn width='2.7958in'/><tablecolumn width='3.2875in'/>
-<tablerow>
-<tablecell valign='center' borderwidth='1px 0px 1px 1px' bgcolor='#efefef'>
-<pardef id='3' keepwithnext='true' keeptogether='true'/>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>UPDATES</run></par></tablecell>
-<tablecell valign='center' borderwidth='1px 0px' bgcolor='#efefef'>
-<pardef id='4' keepwithnext='true' keeptogether='true'/>
-<par def='4'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center' borderwidth='1px 1px 1px 0px' bgcolor='#efefef'>
-<pardef id='5' keepwithnext='true' keeptogether='true'/>
-<par def='5'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>2016-04-27</run></par></tablecell>
-<tablecell valign='center'>
-<pardef id='6' keepwithnext='true' keeptogether='true'/>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>4.4</run></par></tablecell>
-<tablecell valign='center'>
-<pardef id='7' keepwithnext='true' keeptogether='true'/>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Agent: Delete Documents</run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>2013-09-26</run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>1.2.3</run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>View adjustments</run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell valign='center'>
-<par def='3'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='6'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell>
-<tablecell valign='center'>
-<par def='7'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow></table>
-<pardef id='2' firstlineleftmargin='1in'/>
-<par def='2'/></richtext></body></helpaboutdocument>
+<item name='$HTMLCode' sign='true'>
+<rawitemdata type='1'>
+</rawitemdata></item>
+<item name='$Info' sign='true'>
+<rawitemdata type='1'>
+hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
+</rawitemdata></item>
+<item name='$Flags'><text/></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$Fonts'>
+<rawitemdata type='1'>
+i/8oAAEABSZWZXJkYW5hAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</rawitemdata></item>
+<item name='$Body' sign='true'>
+<rawitemdata type='1'>
+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
+AACBAoMEAgCF/wgAAQAACg==
+</rawitemdata></item></note>
 

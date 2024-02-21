@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note default='true' class='icon' xmlns='http://www.lotus.com/dxl' version='12.0'
  maintenanceversion='2.2' replicaid='C1258A40004320EE'>
-<noteinfo noteid='116' unid='2D292D5FB625C6F5C1257B2600410F88' sequence='28'>
+<noteinfo noteid='116' unid='2D292D5FB625C6F5C1257B2600410F88' sequence='30'>
 <created><datetime>20130306T125038,16+01</datetime></created>
-<modified><datetime dst='true'>20231006T141625,45+02</datetime></modified>
-<revised><datetime dst='true'>20231006T141625,44+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20231006T141625,44+02</datetime></lastaccessed>
+<modified><datetime>20240207T163757,00+01</datetime></modified>
+<revised><datetime>20240207T163756,99+01</datetime></revised>
+<lastaccessed><datetime>20240207T163756,99+01</datetime></lastaccessed>
 <addedtofile><datetime dst='true'>20231006T141314,48+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
 <wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
@@ -29,12 +29,12 @@ AAAAUEECICABAAD/////+A4DgA==
 <item name='$TemplateServerName'><text>CN=Anders Magnusson/O=Solute</text></item>
 <item name='$TemplateFileName'><text>CN=SunnyD1/O=Solute!!sunnyside\template\Transporter0.nsf</text></item>
 <item name='$TemplateModTime'><datetime dst='true'>20160427T125827,07+02</datetime></item>
+<item name='$LaunchXPageRunOnServer'><text>0</text></item>
+<item name='$FlagsNoRefresh'><text>v</text></item>
 <item name='$Daos'><text>0</text></item>
 <item name='$LargeSummary'><text>0</text></item>
-<item name='$TITLE'><text>MALL Transporter
-Sunnyside\DEV
-#1MALL_TRANSPORTER_94</text></item>
 <item name='$Flags'><text>JF712c</text></item>
-<item name='$LaunchXPageRunOnServer'><text>0</text></item>
-<item name='$FlagsNoRefresh'><text>v</text></item></note>
+<item name='$TITLE'><text>MALL Transporter 9.6
+Sunnyside\DEV
+#1MALL_TRANSPORTER_9.6</text></item></note>
 

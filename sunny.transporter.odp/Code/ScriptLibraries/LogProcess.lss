@@ -122,7 +122,7 @@ Function LogDocProcess( logAction As String, logPrintMsg As String, logApplName 
 	'=== START action
 	'--------------------------
 	If logAction = "start" Then
-		docLog.Form = "Document"
+		docLog.Form = "LogDocument"
 		docLog.DocArea = logApplName
 		docLog.DocType = "Agent Log"
 		docLog.DocName = logActivityName
@@ -373,3 +373,5 @@ ErrorHandler:
 	Goto ExitPoint
 	
 End Function
+
+

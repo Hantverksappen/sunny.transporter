@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><note xmlns="http://www.lotus.com/dxl" class="filter" maintenanceversion="2.2" replicaid="C1258A40004320EE" version="12.0">
-<noteinfo noteid="1ae" sequence="15" unid="5720B3E083133FECC1257B310054E331">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><note xmlns="http://www.lotus.com/dxl" class="filter" maintenanceversion="2.1" replicaid="C1257B2600410F86" version="12.0">
+<noteinfo noteid="43e" sequence="12" unid="5720B3E083133FECC1257B310054E331">
 <created><datetime>20130317T162711,85+01</datetime></created>
-<modified><datetime>20240207T160913,22+01</datetime></modified>
-<revised><datetime>20240207T160913,21+01</datetime></revised>
-<lastaccessed><datetime>20240207T160913,21+01</datetime></lastaccessed>
-<addedtofile><datetime dst="true">20231006T141314,87+02</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Gunnar Bridell/O=Solute</name><name>CN=xSPDev/O=xSPDev</name><name>CN=Administrator/O=Sunnyside</name><name>CN=Gunnar Bridell/O=Solute</name><name>CN=SOLUTEEXT/O=Solute</name><name>CN=Anders Magnusson/O=Solute</name><name>CN=Gunnar Bridell/O=Solute</name><name>CN=Anders Magnusson/O=Solute</name></updatedby>
+<modified><datetime>20240215T132400,42+01</datetime></modified>
+<revised><datetime>20240215T132400,41+01</datetime></revised>
+<lastaccessed><datetime>20240215T132400,41+01</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20210331T131818,51+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
 <wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
 <item name="$PublicAccess" sign="true"><text>1</text></item>
 <item name="$TITLE" sign="true"><text>LogProcess</text></item>
