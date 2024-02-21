@@ -1,168 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE form SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
-<form name='Database Profile' alias='DatabaseProfile' xmlns='http://www.lotus.com/dxl'
- version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' hide='web mobile'
- nocompose='true' noquery='true' publicaccess='false' designerversion='8.5.3'
- renderpassthrough='true' conflictaction='mergeconflicts'>
-<noteinfo noteid='1ae' unid='E91A3CDCDCAB790DC1257B26004FBE87' sequence='26'>
+<note class='form' xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1258A40004320EE'>
+<noteinfo noteid='1a6' unid='E91A3CDCDCAB790DC1257B26004FBE87' sequence='33'>
 <created><datetime>20130306T153101,19+01</datetime></created>
-<modified><datetime dst='true'>20160427T123913,10+02</datetime></modified>
-<revised><datetime>20130319T111335,14+01</datetime></revised>
-<lastaccessed><datetime dst='true'>20160427T123913,10+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20160427T123913,10+02</datetime></addedtofile></noteinfo>
+<modified><datetime>20240207T154921,95+01</datetime></modified>
+<revised><datetime>20240207T154921,94+01</datetime></revised>
+<lastaccessed><datetime>20240207T154921,94+01</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20231006T141314,85+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
-<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
- event='windowtitle'><formula>"Database profile for " + @DbTitle</formula></code><code
- event='queryopen'><lotusscript>Sub Queryopen(Source As Notesuidocument, Mode As Integer, Isnewdoc As Variant, Continue As Variant)
-	Dim session As New NotesSession
-	Exit Sub
-	If session.CurrentDatabase.Server = "" Then
-		Msgbox "The database profile document can only be updated on a server" , , "Incorrect action"
-		Continue = False
-	End If
-	
-End Sub</lotusscript></code>
-<actionbar bgcolor='silver' bordercolor='black'><actionbarstyle height='40px'/>
-<actionbuttonstyle heighttype='fixed' height='34' bgcolor='none' displayborder='always'><imageref
- name='sol_knappskugga.gif'/></actionbuttonstyle><font size='8pt' name='Verdana'
- pitch='variable' truetype='true' familyid='20' color='system'/><border style='solid'/>
-<action title='Close' icon='27' hide='web mobile'><code event='click'><formula
-> @Command([FileCloseWindow])</formula></code></action>
-<action title='Save' icon='117' hide='preview read web mobile'><code event='click'><formula
->@Command([FileSave])</formula></code></action></actionbar>
-<body><richtext>
-<pardef id='1'><code event='hidewhen' enabled='false'><formula>1</formula></code></pardef>
-<par def='1'><run><font size='3pt' color='red'/></run></par>
-<pardef id='2'><code event='hidewhen'><formula>1</formula></code></pardef>
-<par def='2'><run html='true'><font size='8pt' color='red'/>-hidden start-</run></par>
-<table cellbordercolor='silver' widthtype='fixedleft' refwidth='5.9910in'><tablecolumn
- width='1.4604in'/><tablecolumn width='4.5306in'/>
-<tablerow>
-<tablecell>
-<pardef id='4' keepwithnext='true' keeptogether='true'><code event='hidewhen'><formula
->1</formula></code></pardef>
-<par def='4'><run><font size='8pt'/><field type='text' kind='computed' name='FormDescription'><code
- event='defaultvalue'><formula>"Database Profile"</formula></code></field></run><compositedata
- type='98' prevtype='65418' nexttype='222' afterparcount='8' containertype='65418'
- aftercontainercount='1' afterbegincount='3'>
-Yg4BAIQAAAAAAAAAAAA=
-</compositedata><run><font size='8pt'
- color='red'/></run></par></tablecell>
-<tablecell>
-<pardef id='5' keepwithnext='true' keeptogether='true'><code event='hidewhen'><formula
->1</formula></code></pardef>
-<par def='5'><run><font size='8pt' color='red'/>Form description</run></par></tablecell></tablerow>
-<tablerow>
-<tablecell>
-<par def='4'><run><font color='red'/></run></par></tablecell>
-<tablecell>
-<par def='5'><run><font color='red'/></run></par></tablecell></tablerow></table>
-<par def='2'><run html='true'><font size='8pt' color='red'/>-hidden end-</run></par>
-<pardef id='6'/>
-<par def='6'/><subformref name='LogoHeadMunters |LogoHeadMunters'/>
-<par def='2'><run html='true'><font size='2pt' name='Verdana' pitch='variable'
- truetype='true' familyid='20' color='red'/></run></par>
-<table cellbordercolor='silver' widthtype='fixedleft' columnspacing='0.0785in'
- refwidth='8.1132in'><tablecolumn width='7.9563in'/>
-<tablerow>
-<tablecell borderwidth='0px 1px 1px 0px' bgcolor='#f7f7f7'>
-<pardef id='7' keepwithnext='true' keeptogether='true'><code event='hidewhen'
- enabled='false'><formula>1</formula></code></pardef>
-<par def='7'/>
-<pardef id='8' leftmargin='0' keepwithnext='true' keeptogether='true'><code
- event='hidewhen'><formula>1</formula></code></pardef><subformref name='DbConnect | DbConnect'/>
-<pardef id='9' keepwithnext='true' keeptogether='true'/>
-<par def='9'/>
-<table widthtype='fitmargins' cellbordercolor='silver' leftmargin='0' rowspacing='0.0278in'
- columnspacing='0.0785in' refwidth='7.9458in'><tablecolumn width='20.1354%'/><tablecolumn
- width='79.8646%'/>
-<tablerow>
-<tablecell bgcolor='#e1e1e1'>
-<pardef id='11' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
-<par def='11'><run><font size='9pt' style='bold' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/>IMPORT SETTINGS</run></par></tablecell>
-<tablecell bgcolor='#e1e1e1'>
-<pardef id='12' keepwithnext='true' keeptogether='true'/>
-<par def='12'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell borderwidth='1px 1px 0px' bgcolor='#efefef'>
-<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Server:               </run><button width='2in' widthtype='maximum'
- maxlines='0' wraptext='true' bgcolor='system'><code event='click'><formula
->choice := @Prompt([ChooseDatabase];"Choose Any database on the Correct Server";"Choose Any database on the Correct Server") ;
-
-sep := "¤" ;
-dbInfo := @Implode( choice ; sep ) ;
-
-FIELD ImportServer := @If( choice = 1 ; ImportServer ; @Word( dbInfo ; sep ; 1 ) );
-
-@True</formula></code><font size='8pt'/></button><run><font size='8pt' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></run></par></tablecell>
-<tablecell borderwidth='1px 1px 0px' bgcolor='#efefef'>
-<pardef id='13' spacebefore='1.5' keepwithnext='true' keeptogether='true'/>
-<par def='13'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/><field usenotesstyle='false' height='0.1965in' width='4.7243in'
- borderstyle='inset' type='text' kind='computedwhencomposed' name='ImportServer'><code
- event='defaultvalue'><formula>@ThisValue</formula></code></field></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
-<pardef id='14' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
- keeptogether='true'/>
-<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Directory IN: </run></par></tablecell>
-<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
-<pardef id='15' leftmargin='0.0104in' spacebefore='1.5' keepwithnext='true'
- keeptogether='true'/>
-<par def='15'><run><font size='9pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/><field usenotesstyle='false' height='0.1965in' width='4.7243in'
- borderstyle='inset' type='text' kind='editable' name='DirectoryIn'><code
- event='inputtranslation'><formula>lastChar := @Right( @ThisValue ; 1 );
-@If( lastChar = "\\" ; @LeftBack( @ThisValue ; 1 ) ; @ThisValue )</formula></code></field></run><run
-><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
-<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Directory OUT:</run></par></tablecell>
-<tablecell borderwidth='0px 1px' bgcolor='#efefef'>
-<par def='15'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
- width='4.7243in' borderstyle='inset' type='text' kind='editable' name='DirectoryOut'><code
- event='inputtranslation'><formula>lastChar := @Right( @ThisValue ; 1 );
-@If( lastChar = "\\" ; @LeftBack( @ThisValue ; 1 ) ; @ThisValue )</formula></code></field></run><run
-><font size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
-<par def='14'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Directory ERROR:</run></par></tablecell>
-<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
-<par def='15'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
- width='4.7243in' borderstyle='inset' type='text' kind='editable' name='DirectoryError'><code
- event='inputtranslation'><formula>lastChar := @Right( @ThisValue ; 1 );
-@If( lastChar = "\\" ; @LeftBack( @ThisValue ; 1 ) ; @ThisValue )</formula></code></field></run><run
-><font size='8pt' style='bold' name='Verdana' pitch='variable' truetype='true'
- familyid='20' color='gray'/></run></par></tablecell></tablerow>
-<tablerow>
-<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
-<par def='11'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/>Delete Processed Files after:</run></par></tablecell>
-<tablecell borderwidth='0px 1px 1px' bgcolor='#efefef'>
-<par def='13'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run><run><font size='9pt' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/><field usenotesstyle='false' height='0.1965in'
- width='0.5903in' multiline='true' borderstyle='single' type='number' kind='editable'
- name='FileDeleteLimit'><numberformat format='general' digits='2' punctuated='false'
- parens='false' percent='false' bytes='false'/></field></run><run><font size='8pt'
- name='Verdana' pitch='variable' truetype='true' familyid='20'/> days</run></par></tablecell></tablerow></table></tablecell></tablerow></table>
-<par def='6'><run><font size='8pt' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></run></par><subformref name='DocHistoryCalc |DocHistoryCalc'/>
-<par def='2'><run><font color='red'/></run></par><subformref name='FieldsOnEveryForm |FieldsOnEveryForm'/><subformref
- name='SoftDelete |SoftDelete'/>
-<par def='2'><run><font color='red'/></run></par>
-<par def='2'/></richtext></body>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
 <item name='Udate' summary='false' sign='true'>
 <rawitemdata type='400'>
 AAAAAAAAAAA=
@@ -184,9 +30,298 @@ AAAAAAAAAAA=
 <rawitemdata type='400'>
 AAAAAAAAAAA=
 </rawitemdata></item>
+<item name='$HTMLCode' sign='true'>
+<rawitemdata type='1'>
+X/8QAAIADwAHAAAAAAAAAA==
+</rawitemdata></item>
+<item name='$TITLE'><textlist><text>Database Profile</text><text>DatabaseProfile</text></textlist></item>
+<item name='$Info' sign='true'>
+<rawitemdata type='1'>
+hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
+</rawitemdata></item>
+<item name='$SubForms'><textlist><text>LogoHeadMunters |LogoHeadMunters</text><text
+>DbConnect | DbConnect</text><text>DocHistoryCalc |DocHistoryCalc</text><text
+>FieldsOnEveryForm |FieldsOnEveryForm</text><text>SoftDelete |SoftDelete</text></textlist></item>
 <item name='$SubForm_RepIDs' sign='true'><textlist><text>0000000000000000</text><text
 >0000000000000000</text><text>0000000000000000</text><text>0000000000000000</text><text
 >0000000000000000</text></textlist></item>
+<item name='$WindowTitle' sign='true'><formula>"Database profile for " + @DbTitle</formula></item>
+<item name='$Flags'><text>w1CD</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$ConflictAction'><text>1</text></item>
+<item name='$Fonts'>
+<rawitemdata type='1'>
+i/8oAAEABSZWZXJkYW5hAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</rawitemdata></item>
 <item name='$$ScriptName' summary='false' sign='true'><text>DatabaseProfile</text></item>
-<item name='FileDeleteLimit' summary='false'><number>0</number></item></form>
+<item name='$$FormScript' summary='false' sign='true'><text>'++LotusScript Development Environment:2:5:(Options):0:66
+
+'++LotusScript Development Environment:2:5:(Forward):0:1
+Declare Sub Queryopen(Source As Notesuidocument, Mode As Integer, Isnewdoc As Variant, Continue As Variant)
+
+'++LotusScript Development Environment:2:5:(Declarations):0:2
+
+'++LotusScript Development Environment:2:2:Queryopen:1:12
+Sub Queryopen(Source As Notesuidocument, Mode As Integer, Isnewdoc As Variant, Continue As Variant)
+	Dim session As New NotesSession
+	Exit Sub
+	If session.CurrentDatabase.Server = "" Then
+		Msgbox "The database profile document can only be updated on a server" , , "Incorrect action"
+		Continue = False
+	End If
+	
+End Sub
+'++LotusScript Development Environment:2:2:BindEvents:1:129
+Private Sub BindEvents ( Byval ObjectName_ As String )
+	Static Source As NOTESUIDOCUMENT
+	Set Source = Bind(Objectname_)
+	On Event QUERYOPEN From Source Call QUERYOPEN
+End Sub<break/></text></item>
+<item name='FormDescription' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DbRepID' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DbTemplate' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DbRepIDLS' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DbFilePath' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DbArchive' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DBTitle' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DBSubTitle' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DBShortName' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppRepIDSel' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppRepIDOther' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppRepID' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppRepIDLS' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppFilePath' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppNotes' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='TransporterRepIDSel' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='TransporterRepIDOther' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='TransporterRepID' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='TransporterRepIDLS' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='TransporterFilePath' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='TransporterNotes' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppLogRepIDSel' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppLogRepIDOther' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppLogRepID' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppLogRepIDLS' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppLogFilePath' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='AppLogNotes' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ImportServer' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DirectoryIn' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DirectoryOut' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='DirectoryError' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='FileDeleteLimit' summary='false'><number>0</number></item>
+<item name='LogStatus_Import' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='LogStatus_Delete' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='$Fields'><textlist><text>LogStatus_Delete</text><text>LogStatus_Import</text><text
+>FileDeleteLimit</text><text>DirectoryError</text><text>DirectoryOut</text><text
+>DirectoryIn</text><text>ImportServer</text><text>AppLogNotes</text><text
+>AppLogFilePath</text><text>AppLogRepIDLS</text><text>AppLogRepID</text><text
+>AppLogRepIDOther</text><text>AppLogRepIDSel</text><text>TransporterNotes</text><text
+>TransporterFilePath</text><text>TransporterRepIDLS</text><text>TransporterRepID</text><text
+>TransporterRepIDOther</text><text>TransporterRepIDSel</text><text>AppNotes</text><text
+>AppFilePath</text><text>AppRepIDLS</text><text>AppRepID</text><text>AppRepIDOther</text><text
+>AppRepIDSel</text><text>DBShortName</text><text>DBSubTitle</text><text>DBTitle</text><text
+>DbArchive</text><text>DbFilePath</text><text>DbRepIDLS</text><text>DbTemplate</text><text
+>DbRepID</text><text>FormDescription</text></textlist></item>
+<item name='$Body' sign='true'>
+<rawitemdata type='1'>
+gQKC/1oAAQAAAAAAAAAAAKAFAACgBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAABAAAAAJSHAAAAAAAAAAAAAAAAAQAAAAQAAAC7/yAAAQC5AgoCAABe6xIAAAAQAAAA
+AAAAAAAA8D8DAIMEAQDdBgAAhf+F/wgAAQACA9IIAQD/AAAA3gYAAIX/gQKC/1oAAgAAAAAAAAAA
+AKAFAACgBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAJSH
+AAAAAAAAAAAAAAAAAQAAAAQAAACDBAIAvAYBAAIAzP8IAAAAAADdBgAAhf+F/xYAAQACCC1oaWRk
+ZW4gc3RhcnQt0ggBAP8AAADeBgAAhf/N/wgAAAAAAIECgv9aAAMAAAAAAAAAAACgBQAAoAUAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAACUhQAAAACgBQYAAAAA
+AAEAAAAEAAAAgwQDAN0GAQD7//v/LAAgAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQDAwMAA
+AAAAAAAAXP8+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAQAA
+CgAAAAABAAAAAADeBgEA+/+jDqAFKAA8AAAAAAACAKQSAACgBdcNAABVAhERAQEAAIECgv9aAAQA
+AAAAAAAAAACvBdcNrwUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACG
+CQAAAACUhwAAAAAAAAAAAAAAAAEAAAAEAAAAgwQEALwGAQAEAIX/CAABAAAK3QYAAIr//v9QAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAACK/1AAiAEABQAAAAAAAAAAAAABAAAIHAAAAAAAAAAPAAAAAAAcAAAA
+GgABABAARGF0YWJhc2UgUHJvZmlsZQMARm9ybURlc2NyaXB0aW9uAGIOAQCEAAAAAAAAAAAA3gYA
+AIr/3QYAAIX/hf8IAAEAAgjSCAEA/wAAAN4GAACF/6QSAAHXDVMnAABVAhERAQEAAIECgv9aAAUA
+AAAAAAAAAADmDVMn5g0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACG
+CQAAAACUhwAAAAAAAAAAAAAAAAEAAAAEAAAAgwQFALwGAQAFAN0GAACF/4X/GAABAAIIRm9ybSBk
+ZXNjcmlwdGlvbtIIAQD/AAAA3gYAAIX/pBIBAKAF1w0AAFUCEREBAQAAgQKDBAQAvAYBAAQA3QYA
+AIX/hf8IAAEAAgrSCAEA/wAAAN4GAACF/6QSAQHXDVMnAABVAhERAQEAAIECgwQFALwGAQAFAN0G
+AACF/4X/CAABAAIK0ggBAP8AAADeBgAAhf+lBgAAAACBAoMEAgC8BgEAAgDM/wgAAAAAAN0GAACF
+/4X/FAABAAIILWhpZGRlbiBlbmQt0ggBAP8AAADeBgAAhf/N/wgAAAAAAIECgv9aAAYAAAAAAAAA
+AACgBQAAoAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAACU
+hwAAAAAAAAAAAAAAAAEAAAAEAAAAgwQGAIX/CAABAAAKgQKDBAYAhf8IAAEAAArdBgAArf9x/0IA
+AAAAAAMAGAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAATG9nb0hlYWRNdW50ZXJzIHxMb2dvSGVhZE11
+bnRlcnOt/y0ADgAIAAAAIQBMb2dvSGVhZE11bnRlcnMgfExvZ29IZWFkTXVudGVycwAArgLeBgAA
+rgCF/wgAAQAACoECgwQCALwGAQACAMz/CAAAAAAA3QYAAIX/hf8IAAUAAgLSCAEA/wAAAN4GAACF
+/83/CAAAAAAAgQKDBAMA3QYBAPv/+/8sACAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAMDA
+wAAAAAAAAABc/z4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAB
+AAAKAAAAAAEAAAAAAN4GAQD7/6MOoAVxADwAcQAAAAIApBIAABEG0jIAAEQDEBABAS8AgQKC/1oA
+BwAAAAAAAAAAABEG0jIRBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AIYBAAAAAJSHAAAAAAAAAAAAAAAAAQAAAAQAAACDBAcAvAYBAAcAhf8IAAEAAAqBAoL/WgAIAAAA
+AAAAAAAAEQbSMhEGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgkA
+AAAAlIQAAAAAAAAAAAAAAAABAAAABAAAAIMECAC8BgEACACF/wgAAQAACt0GAACt/3H/KwAAAAAA
+AwAYAAkAAAAAAAAAAAAAAAAAAAAAAAAAAABEYkNvbm5lY3QAfv8iAA4ACAAAABYARGJDb25uZWN0
+IHwgRGJDb25uZWN0AH8C3gYAAK4Ahf8IAAEAAAqBAoL/WgAJAAAAAAAAAAAAEQbSMhEGAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgEAAAAAlIcAAAAAAAAAAAAAAAAB
+AAAABAAAAIMECQCF/wgAAQAACoECgv9aAAoAAAAAAAAAAAARBtIyEQYAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAAACUhQAAAAAAAAAAAAAAAAEAAAAEAAAAgwQK
+AN0GAQD7//v/LAAhAAAACAIAAAAAAAAAAAAANwIAAAAAAAAAAAAAAQDAwMAAAAAAAAAAXP8+AAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAQAACgAAAAABAAAAAADe
+BgEA+//PDhEGcQA8AHEAKAADANASAACCBicP+xdVAxERAQFPAIECgv9aAAsAAAAAAAEAAACRBicP
+kQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACGAQAAAACUhwAAAAAA
+AAAAAAAAAAEAAAAEAAAAgwQLAIX/FwAFAQAJSU1QT1JUIFNFVFRJTkdTAOIENwLTCAEA4eHhANAS
+AAEJEFIyhVhVAxERAQFPAIECgv9aAAwAAAAAAAAAAAAYEFIyGBAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACGAQAAAACUhwAAAAAAAAAAAAAAAAEAAAAEAAAAgwQMAIX/
+CAAFAAAI0wgBAOHh4QDQEgEAggYnD/sXFQMRAQEBPwCBAoMECwCF/x4ABQAACFNlcnZlcjogICAg
+ICAgICAgICAgICDdBgAArf+p/54BAwAYAAAAkgGSAQEAdgAGAGNob2ljZQIAGQAAAAAAAAABACkA
+Q2hvb3NlIEFueSBkYXRhYmFzZSBvbiB0aGUgQ29ycmVjdCBTZXJ2ZXIAAQApAENob29zZSBBbnkg
+ZGF0YWJhc2Ugb24gdGhlIENvcnJlY3QgU2VydmVyALADAwAHAA4ACAAJMVMyUzEwUwEAEgADAHNl
+cAABAAEAzwADAAcAEAAKAAkwUlIxUzJTM1MBACIABgBkYkluZm8FAAYAY2hvaWNlBQADAHNlcACF
+AgMABwAYABEACTBSMVMyUzRTNVM2UzdTOFMAAwBoAAwASW1wb3J0U2VydmVyBQAGAGNob2ljZQAA
+AAAAAAAA8D8KAq8APAAWAAUADABJbXBvcnRTZXJ2ZXKuACYABQAGAGRiSW5mbwUAAwBzZXAAAAAA
+AAAAAADwP20DrgAEALUDAwAHADYALwAJMFJSMVMyUzNTNVM2UzdTOFM5UzEwUzExUzEzUzE0UzE1
+UzE2UzE3UzE4UzE5UwAAAAgAKwADAAcACgAEAAkwUlKr/xAAAABACwAAAAABAAAIcggJAAAAAABi
+DgEAggAAAAAAAAAAAKoC3gYAAK4Ahf8IAAUAAAjTCAEA7+/vANASAQEJEFIyhVgVAxEBAQE/AIEC
+gv9aAA0AAAAAAAEAAAAYEFIyGBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAACGAQAAAACUhwAAAAAAAAAAAAAAAAEAAAAEAAAAgwQNAIX/CAABAAAK3QYAAPf/9/8kAAEA
+AIAAAJMaGwEAAAAAAAAAAGQAAAAAAAAAAAAAAAAA/v9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACw/xQA
+AAAAEIAAAAAAAAAAAAAAAIr/QACAAAAFAAAAAAAAAAAAAAUIDgkQAAAAAAAAAAwAAAAAABAACgAE
+AAAACgD7ADEBAwBJbXBvcnRTZXJ2ZXLSCAEAgICAANIICQD///8A3gYAAPf/hf8IAAEAAArTCAEA
+7+/vANASAgCCBicP+xcFAxEAAQE/AIECgv9aAA4AAAAAAAEAAACRBicPkQYAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACGAQAAAACUhA8AAAAPAAAAAAAAAAEAAAAEAAAA
+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
+gQKDBAYAhf8IAAEAAArdBgAArf9x/0AAAAAAAAMAGAAeAAAAAAAAAAAAAAAAAAAAAAAAAAAARG9j
+SGlzdG9yeUNhbGMgfERvY0hpc3RvcnlDYWxjrf8rAA4ACAAAAB8ARG9jSGlzdG9yeUNhbGMgfERv
+Y0hpc3RvcnlDYWxjAACuAt4GAACuAIX/CAABAAAKgQKDBAIAvAYBAAIA3QYAAIX/hf8IAAEAAgrS
+CAEA/wAAAN4GAACF/4ECgwQCALwGAQACAIX/CAABAAAK3QYAAK3/cf9GAAAAAAADABgAJAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAEZpZWxkc09uRXZlcnlGb3JtIHxGaWVsZHNPbkV2ZXJ5Rm9yba3/MQAO
+AAgAAAAlAEZpZWxkc09uRXZlcnlGb3JtIHxGaWVsZHNPbkV2ZXJ5Rm9ybQAArgLeBgAArgCF/wgA
+AQAACoECgwQCALwGAQACAIX/CAABAAAK3QYAAK3/cf84AAAAAAADABgAFgAAAAAAAAAAAAAAAAAA
+AAAAAAAAAFNvZnREZWxldGUgfFNvZnREZWxldGWt/yMADgAIAAAAFwBTb2Z0RGVsZXRlIHxTb2Z0
+RGVsZXRlAACuAt4GAACuAIX/CAABAAAKgQKDBAIAvAYBAAIA3QYAAIX/hf8IAAEAAgrSCAEA/wAA
+AN4GAACF/4ECgwQCALwGAQACAIX/CAABAAAK
+</rawitemdata></item>
+<item name='$V5ACTIONS' sign='true'>
+<rawitemdata type='1'>
+i/8oAAEABSZWZXJkYW5hAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL0cDwAAAAEAAQAAABUDAAAA
+AAAABQAACCIAAAB5/2wAAQDAwMAAAQAAAAAACQAAAAAAAQD///8AAQAoAAAAAAAAAAAAAwAAAAAA
+AAAAAAAAAAAAAERAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAD2/zUAAAAAAAMAEwATAAAAAAAAAAAAAAAAAAAAAAAAAAAAc29sX2tuYXBwc2t1Z2dhLmdp
+Zj/8/zoAAAAAAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA
+AAAAvv86AAAAAQAbAJ9BAAQFAAAAAAAAAENsb3NlAB4AAAASAAIA/BEAAAAAAADtAQMABwAKAAMA
+CTBTAL7/OgAAAAEAdQCTQQAEBAAAAAAAAABTYXZlIAAAABIAAgDGCwAAAAAAAO0BAwAHAAwABQAJ
+MFMwRQA=
+</rawitemdata></item></note>
 

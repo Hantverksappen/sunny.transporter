@@ -9,10 +9,12 @@ Option Declare
 
 Use "LogProcess"
 
+%Include "lserr.lss"
+
 '++LotusScript Development Environment:2:5:(Forward):0:1
 Declare Class ImportFileClass
-Declare Function DeleteFile
 Declare Function MainImportDocument()
+Declare Function DeleteFile
 
 '++LotusScript Development Environment:2:5:(Declarations):0:10
 Private logApplName As String
@@ -26,6 +28,7 @@ Private logMsg As String
 	Description: Comments for Class
 	Updates:
 	20130423	-	New documents updated with field Type = "Import". /AMA
+	20240207	-	New setting for logging /AMA
 %END REM
 Class ImportFileClass
 	Private strVersion As String
@@ -37,6 +40,7 @@ Class ImportFileClass
 	Private strDirIn As String
 	Private strDirOut As String
 	Private debug As Boolean
+	Private logToDoc As Boolean
 	
 	%REM
 	===============================
@@ -45,7 +49,7 @@ Class ImportFileClass
 	===============================
 	%END REM
 	Sub New
-		strVersion = "201300423"
+		strVersion = "20240207"
 		processName = "MainFunctions.ImportFileClass"
 		Set me.session = New NotesSession
 		Set me.db = session.Currentdatabase
@@ -53,11 +57,19 @@ Class ImportFileClass
 		
 		Print me.processName + " new (" + strVersion +")"
 		
-		logApplName = me.db.Title
-		logActivityName = me.processName
-		logMsg = {PROCESS STARTED (version: } & me.strVersion & {)
+		Set me.docDbProfile = me.db.Getprofiledocument( "DatabaseProfile" )
+		
+		If Not me.docDbProfile Is Nothing Then
+			me.logToDoc = (me.docDbProfile.Getitemvalue("LogStatus_Import")(0) = "1")
+		End If
+		
+		If me.logToDoc Then
+			logApplName = me.db.Title
+			logActivityName = me.processName
+			logMsg = {PROCESS STARTED (version: } & me.strVersion & {)
 ==================================================}
-		Call LogDocProcess( "start", logMsg, logApplName, logActivityName )
+			Call LogDocProcess( "start", logMsg, logApplName, logActivityName )
+		End If
 		
 	End Sub
 	
@@ -70,6 +82,7 @@ Class ImportFileClass
 	Function init()
 		Dim fileName As String
 		Dim filePath As String
+		On Error GoTo ErrorHandler
 		
 		Set me.docDbProfile = me.db.Getprofiledocument( "DatabaseProfile" )
 		
@@ -83,9 +96,11 @@ Directory OUT: } & me.strDirOut
 			LogPrint( logMsg )
 			
 			If me.strDirIn = "" Or me.strDirOut = "" Then
-				logmsg = {ERROR: Directory for Input and/or Output is missing in Database Profile!}
+				If me.logToDoc Then
+					logmsg = {ERROR: Directory for Input and/or Output is missing in Database Profile!}
+					Call LogDocProcess( "error", logMsg, "", "" )
+				End If
 				Print processName & { - } & logMsg
-				Call LogDocProcess( "error", logMsg, "", "" )
 				Exit Function
 			End If
 			
@@ -107,15 +122,31 @@ Directory OUT: } & me.strDirOut
 			Loop
 			
 		Else
-			logmsg = {ERROR: Database Profile Not Found!}
+			If me.logToDoc Then
+				logmsg = {ERROR: Database Profile Not Found!}
+				Call LogDocProcess( "error", logMsg, "", "" )
+			End If
 			Print processName & { - } & logMsg
-			Call LogDocProcess( "error", logMsg, "", "" )
 			Exit Function
 		End If
 		
-		logMsg = {==================================================
+		If me.logToDoc Then
+			logMsg = {==================================================
 PROCESS ENDED}
-		Call LogDocProcess( "end", logMsg, logApplName, logActivityName )
+			Call LogDocProcess( "end", logMsg, logApplName, logActivityName )
+		End If
+		
+		Exit Function
+		
+ErrorHandler:
+		If Err = ErrPathNotFound Then
+			If me.logToDoc Then
+				logmsg = {ERROR: Directory for Input and/or Output is missing on current server!}
+				Call LogDocProcess( "error", logMsg, "", "" )
+			End If
+			Print processName & { - } & logMsg
+		End If
+		Exit Function
 		
 	End Function
 
@@ -169,6 +200,33 @@ PROCESS ENDED}
 	End Function	
 	
 End Class
+'++LotusScript Development Environment:2:1:MainImportDocument:5:8
+%REM
+	Function MainImportDocument
+	Description: Comments for Function
+%END REM
+Function MainImportDocument()
+	Dim importOBJ As ImportFileClass
+	
+	Set importOBJ = New ImportFileClass
+	
+	Call importOBJ.Init()
+	
+End Function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '++LotusScript Development Environment:2:1:DeleteFile:5:8
 %REM
 	Function Main_DeleteFile
@@ -189,21 +247,27 @@ Function DeleteFile
 	Dim cExe As Single
 	Dim cDel As Single
 	Dim debug As Boolean
+	Dim logToDoc As Boolean
 	
 	strVersion = "20130319"
 	processName = "MainFunctions.DeleteFile"
 	Set session = New NotesSession
 	Set db = session.Currentdatabase
 	debug = True
-		
-	logApplName = db.Title
-	logActivityName = processName
-	logMsg = {PROCESS STARTED (version: } & strVersion & {)
-==================================================}
-	Call LogDocProcess( "start", logMsg, logApplName, logActivityName )
-	
 	
 	Set  docDbProfile =  db.Getprofiledocument( "DatabaseProfile" )
+	
+	If Not docDbProfile Is Nothing Then
+		logToDoc = (docDbProfile.Getitemvalue("LogStatus_Delete")(0) = "1")
+	End If
+	
+	If logToDoc Then
+		logApplName = db.Title
+		logActivityName = processName
+		logMsg = {PROCESS STARTED (version: } & strVersion & {)
+==================================================}
+		Call LogDocProcess( "start", logMsg, logApplName, logActivityName )
+	End If	
 	
 	If Not  docDbProfile Is Nothing Then
 		'=== Get Directories from Database Profile
@@ -215,14 +279,18 @@ File Delete Limit: } & CStr( intLimitDays ) & { days.}
 		LogPrint( logMsg )
 		
 		If  strDirOut = "" Then
-			logmsg = {ERROR: Directory for Output is missing in Database Profile!}
+			If logToDoc Then
+				logmsg = {ERROR: Directory for Output is missing in Database Profile!}
+				Call LogDocProcess( "error", logMsg, "", "" )
+			End If
 			Print processName & { - } & logMsg
-			Call LogDocProcess( "error", logMsg, "", "" )
 			Exit Function
 		ElseIf CStr( intLimitDays ) = "" Then
-			logmsg = {ERROR: Limit for File Delete is missing in Database Profile!}
+			If logToDoc Then
+				logmsg = {ERROR: Limit for File Delete is missing in Database Profile!}
+				Call LogDocProcess( "error", logMsg, "", "" )
+			End If
 			Print processName & { - } & logMsg
-			Call LogDocProcess( "error", logMsg, "", "" )
 			Exit Function
 		End If
 		
@@ -263,9 +331,11 @@ File Delete Limit: } & CStr( intLimitDays ) & { days.}
 		Call LogPrint( {--------------------------------------} )
 		
 	Else
-		logmsg = {ERROR: Database Profile Not Found!}
+		If logToDoc Then
+			logmsg = {ERROR: Database Profile Not Found!}
+			Call LogDocProcess( "error", logMsg, "", "" )
+		End If
 		Print processName & { - } & logMsg
-		Call LogDocProcess( "error", logMsg, "", "" )
 		Exit Function
 	End If
 	
@@ -273,36 +343,14 @@ File Delete Limit: } & CStr( intLimitDays ) & { days.}
 	Call LogPrint( logMsg )
 	If debug Then Print  processName + logMsg
 	
-	logMsg = {
+	If logToDoc Then
+		logMsg = {
 ==================================================
 PROCESS ENDED}
-	Call LogDocProcess( "end", logMsg, logApplName, logActivityName )
+		Call LogDocProcess( "end", logMsg, logApplName, logActivityName )
+	End If
 	
 
 End Function
-
-'++LotusScript Development Environment:2:1:MainImportDocument:5:8
-%REM
-	Function MainImportDocument
-	Description: Comments for Function
-%END REM
-Function MainImportDocument()
-	Dim importOBJ As ImportFileClass
-	
-	Set importOBJ = New ImportFileClass
-	
-	Call importOBJ.Init()
-	
-End Function
-
-
-
-
-
-
-
-
-
-
 
 

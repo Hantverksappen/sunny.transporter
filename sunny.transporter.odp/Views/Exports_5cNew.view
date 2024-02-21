@@ -1,72 +1,71 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE view SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
-<view name='Exports\New' alias='exports.new' xmlns='http://www.lotus.com/dxl'
- version='12.0' maintenanceversion='2.2' replicaid='C1257FA2003A850E' showinmenu='false'
- publicaccess='false' designerversion='8.5.3' unreadmarks='none' onopengoto='lastopened'
- onrefresh='displayindicator' headers='simple' opencollapsed='false' showresponsehierarchy='false'
- showmargin='false' shrinkrows='false' extendlastcolumn='false' showhierarchies='false'
- unreadcolor='black' rowlinecount='1' headerlinecount='2' rowspacing='1.5'
- bgcolor='#e0f1ff' totalscolor='gray' headerbgcolor='#e0f1ff' boldunreadrows='false'
- evaluateactions='false' allownewdocuments='false' allowcustomizations='true'
- hidemarginborder='false' marginwidth='0px' marginbgcolor='white' gridstyle='solid'
- gridcolor='#0082bf' uniquekeys='false'>
-<noteinfo noteid='18e' unid='7ACF095AEF86DB3EC1257B56003C9A04' sequence='8'>
+<note class='view' xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.2'
+ replicaid='C1258A40004320EE'>
+<noteinfo noteid='196' unid='7ACF095AEF86DB3EC1257B56003C9A04' sequence='10'>
 <created><datetime dst='true'>20130423T130155,88+02</datetime></created>
-<modified><datetime dst='true'>20160427T123912,93+02</datetime></modified>
-<revised><datetime dst='true'>20130424T184709,66+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20160427T123912,93+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20160427T123912,93+02</datetime></addedtofile></noteinfo>
+<modified><datetime dst='true'>20231006T141523,57+02</datetime></modified>
+<revised><datetime dst='true'>20231006T141523,56+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20231006T144931,75+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20231006T141314,81+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Anders Magnusson/O=Solute</name></updatedby>
-<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby><code
- event='selection'><formula>SELECT  form = "File" &amp; ( Status = "" | Status = "New" ) &amp; Type = "Export" &amp; Deleted = ""</formula></code>
-<actionbar bgcolor='#d4d0c8' bordercolor='black'>
-<actionbuttonstyle bgcolor='#d4d0c8' displayborder='always'/><border width='0px 0px 1px'/></actionbar>
-<column sort='ascending' hidedetailrows='false' itemname='$2' width='14' resizable='true'
- separatemultiplevalues='true' sortnoaccent='false' sortnocase='true' showaslinks='false'><font
- size='8pt' color='maroon' style='italic' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/><columnheader title='Created'><font size='8pt'
- color='#0060a0' name='Verdana' pitch='variable' truetype='true' familyid='20'/></columnheader><datetimeformat
- show='datetime' date='yearmonthday' fourdigityearfor21stcentury='true' time='hourminute'
- zone='never' dateformat='yearmonthdayweekday' dayformat='twodigitday' monthformat='twodigitmonth'
- yearformat='fourdigityear' weekdayformat='shortname' dateseparator1='-' dateseparator2='-'
- dateseparator3=' ' timeseparator=':' timeformat24='true' preference='usersetting'/><numberformat
- format='general' punctuated='false' parens='false' percent='false' bytes='false'/><code
- event='value'><formula>@Created</formula></code></column>
-<column hidedetailrows='false' itemname='$8' width='1.6250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
- showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
->@If( Type = "Import" | Type = "" ; 111 ;
-Type = "Export" ; 108 ;
-0)</formula></code></column><sharedcolumnref name='icon_Attachments'>
-<column hidedetailrows='false' itemname='$6' width='1.6250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='true' sortnocase='true' showaslinks='false'
- showasicons='true'><columnheader><font size='8pt' color='#0060a0' name='Verdana'
- pitch='variable' truetype='true' familyid='20'/></columnheader><code event='value'><formula
->@If(@Attachments;5;0)</formula></code></column></sharedcolumnref>
-<column hidedetailrows='false' itemname='$7' width='53.1250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><font
- size='8pt' name='Verdana' pitch='variable' truetype='true' familyid='20'/><columnheader
- title='Files'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/></columnheader><code event='value'><formula
->@AttachmentNames</formula></code></column>
-<column align='center' hidedetailrows='false' itemname='Status' width='8.7500'
- resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
- showaslinks='false'><font size='8pt'/><columnheader title='Status'><font
- size='8pt' color='#0060a0' name='Verdana' pitch='variable' truetype='true'
- familyid='20'/></columnheader></column>
-<column resort='ascending' hidedetailrows='false' itemname='FileUID' width='10.7500'
- resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
- showaslinks='false' deferindexcreation='true'><font size='8pt' color='gray'/><columnheader
- title='FileUID'><font size='8pt' color='#0060a0' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/></columnheader></column>
-<column sort='ascending' hidedetailrows='false' itemname='SendTo' width='24.1250'
- resizable='true' separatemultiplevalues='false' sortnoaccent='false' sortnocase='true'
- showaslinks='false'><font size='8pt' color='navy' name='Verdana' pitch='variable'
- truetype='true' familyid='20'/><columnheader title='To'><font size='8pt'
- color='#0060a0' name='Verdana' pitch='variable' truetype='true' familyid='20'/></columnheader></column>
-<column hidedetailrows='false' itemname='StatusInfo' width='58.3750' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><font
- size='8pt' color='green'/><columnheader title='Statusinfo'><font size='8pt'
- color='#0060a0' name='Verdana' pitch='variable' truetype='true' familyid='20'/></columnheader></column></view>
+<wassignedby><name>CN=Anders Magnusson/O=Solute</name></wassignedby>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$V5ACTIONS' sign='true'>
+<rawitemdata type='1'>
+vRwjAAAAAQABAAAAAQAAAAAAAAABAAAJAAAAAHn/bAABANTQyAABAAAAAAABAAAAAAABANTQyAAB
+AB8AAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAPz/OgAAAAAAAAAAAAAAAQAAAAAAAAAAAAwAAAAAAAAAAAAA
+AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=
+</rawitemdata></item>
+<item name='$TITLE' sign='true'><text>Exports\New|exports.new</text></item>
+<item name='$Index' sign='true'><text/></item>
+<item name='$Formula' summary='true' sign='true'><formula compiled='true'>
+vAECAAwAAgAkMmkAAwACAHoAAgAkOAUABABUeXBlAQAGAEltcG9ydAoCBQAEAFR5cGUBAAAACgId
+Aq8ASgAQAAAAAAAAAADAW0CuADoABQAEAFR5cGUBAAYARXhwb3J0CgKvACIAEAAAAAAAAAAAAFtA
+rgASAAAAAAAAAAAAAACuAAQAtQUDAAIAMAACACQ2cgCvACIAEAAAAAAAAAAAABRArgASAAAAAAAA
+AAAAAACuAAQAtQMDAAIADAACACQ3cwADAAUASABEAAkAAgACAAIAAgAGAAcABgAKAAkAJDIkOCQ2
+JDdTdGF0dXNGaWxlVUlEU2VuZFRvU3RhdHVzSW5mbyRDb25mbGljdAQABAAAAGwABQAEAGZvcm0B
+AAQARmlsZQoCBQAGAFN0YXR1cwEAAAAKAgUABgBTdGF0dXMBAAMATmV3AAoCHQIEABwCBQAEAFR5
+cGUBAAYARXhwb3J0CgIcAgUABwBEZWxldGVkAAEAAAAKAhwCAwAHAEAAOgAJTDFTMkUyUzNTNFM1
+UzZTN1M4UzlTMTBTMTFTMTJTMTNTMTRTMTVTMTZTMTdTMThTMTlTMjBTMjFT
+</formula></item>
+<item name='$Collation' summary='true'>
+<rawitemdata type='2'>
+HAACAABEiGYAAAACAIBmAAIABgAkMlNlbmRUbw==
+</rawitemdata></item>
+<item name='$Collation1' summary='true'>
+<rawitemdata type='2'>
+FAABAAJEgGYAAAAHAEZpbGVVSUQ=
+</rawitemdata></item>
+<item name='$ViewFormat' sign='true'>
+<rawitemdata type='5'>
+AQAIAAAACgYAAFZDAQACAAcADgAAAHAABQIICAABAAAAAAABAAICAAAAVkNAAAIAAACuAAAADQAB
+AAAKAAAAAAAAAAAAAgIAAABWQ0AAAgAAAD4AAAANAAEAAAoAAAAAAAAAAAACAgAAAFZDAAACAAUA
+DgAAAKkBBQAACAAAAAAAAAAAAAICAAAAVkMAAAYABgAAAAAARgABAAAIAgAAAAAAAAAAAgIAAABW
+QwABBwAHAAAAAABWAAEADggAAAAAAAAAAAACAgAAAFZDAQAGAAIAAAAAAMEABQAKCAAAAAAAAAAA
+AAICAAAAVkMAAAoACgAAAAAA0wEBAAkIAAAAAAAAAAAAAgIAAAAkMkNyZWF0ZWQOAAIADAACACQy
+aQADACQ4rgACAHoAAgAkOAUABABUeXBlAQAGAEltcG9ydAoCBQAEAFR5cGUBAAAACgIdAq8ASgAQ
+AAAAAAAAAADAW0CuADoABQAEAFR5cGUBAAYARXhwb3J0CgKvACIAEAAAAAAAAAAAAFtArgASAAAA
+AAAAAAAAAACuAAQAtQUDAAcAMgAsAAkyUzNTNFM1UzZTN1M4UzlTMTBTMTFTMTJSMTNTMTRTMTVT
+MTZTMTdTMThSJDY+AAIAMAACACQ2cgCvACIAEAAAAAAAAAAAABRArgASAAAAAAAAAAAAAACuAAQA
+tQMDAAcADAAFAAkwUzBFACQ3RmlsZXMOAAIADAACACQ3cwADAFN0YXR1c1N0YXR1c0ZpbGVVSURG
+aWxlVUlEU2VuZFRvVG9TdGF0dXNJbmZvU3RhdHVzaW5mbyYABwAAAAEBAAkBAAAKAQEOCgAAAQCt
+KwECGAACAAAAAAAAAAAAV0MFAIcIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAA//8AAAAAAAAAAAAA
+AAAAAFdDBQCHCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAABXQwUAhwgA
+AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAD//wAAAAAAAAAAAAAAAAAAV0MFAIcIAAAAAAAAAAAAAAAA
+AAAAAAAABAAAAAAA//8AAAAAAAAAAAAAAAAAAFdDBQCHCAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA
+AP//AAAAAAAAAAAAAAAAAABXQwUAhwgAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAD//wAAAAAAAAAA
+AAAAAAAAV0MFAIcIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA//8AAAAAAAAAAAAAAAAAAFdDBQCH
+CAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAP//AAAAAAAAAAAAAAAAAABCAAEAAAABAODx/wAFAP//
+/wABAACCvwAAAAAAAAAAAAEA////AAEA4PH/AAAAAQAAAAAAAQCAgIAAAQAAAAAAAAAIAAAAAAAB
+AFhDAEyAAQAAAAAAAQICAgEBAQEHBAIAAAAAAAAAAC0tIDpZQwAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEABpY29uX0F0dGFjaG1lbnRzYUNUAAgAAAAA
+AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAA
+</rawitemdata></item>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$Flags'><text>Y</text></item>
+<item name='$Fonts' sign='true'><textlist><text>5</text><text>38</text><text
+>Verdana</text></textlist></item></note>
 
